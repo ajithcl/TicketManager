@@ -32,8 +32,58 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Status of the ticket. eg. Assigned, Waiting, In Progress etc.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Tickets', @level2type=N'COLUMN',@level2name=N'Status'
 GO
 
+/****** Object:  Index [IX_CompletedOn]    Script Date: 5/10/2021 5:53:04 PM ******/
+CREATE NONCLUSTERED INDEX [IX_CompletedOn] ON [dbo].[Tickets]
+(
+	[CompletedOn] DESC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
 
-/******** Object database   *************/
+USE [TicketManager]
+GO
+
+/****** Object:  Index [IX_CreatedOn]    Script Date: 5/10/2021 5:53:46 PM ******/
+CREATE NONCLUSTERED INDEX [IX_CreatedOn] ON [dbo].[Tickets]
+(
+	[CreatedOn] DESC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+USE [TicketManager]
+GO
+
+SET ANSI_PADDING ON
+GO
+
+/****** Object:  Index [IX_Status]    Script Date: 5/10/2021 5:54:00 PM ******/
+CREATE NONCLUSTERED INDEX [IX_Status] ON [dbo].[Tickets]
+(
+	[Status] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Ticket Status' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Tickets', @level2type=N'INDEX',@level2name=N'IX_Status'
+GO
+
+USE [TicketManager]
+GO
+
+/****** Object:  Index [IX_UpdatedOn]    Script Date: 5/10/2021 5:54:12 PM ******/
+CREATE NONCLUSTERED INDEX [IX_UpdatedOn] ON [dbo].[Tickets]
+(
+	[UpdatedOn] DESC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+/****** Object:  Index [PK_Tickets]    Script Date: 5/10/2021 5:54:27 PM ******/
+ALTER TABLE [dbo].[Tickets] ADD  CONSTRAINT [PK_Tickets] PRIMARY KEY CLUSTERED 
+(
+	[TicketNumber] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+
+/********************************************************** Object database   *************/
 CREATE TABLE [dbo].[Objects](
 	[TicketNumber] [char](50) NOT NULL,
 	[ObjectName] [char](75) NOT NULL,
@@ -52,4 +102,42 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'One ticket record may contain multiple object records.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Objects', @level2type=N'CONSTRAINT',@level2name=N'FK_Objects_Tickets'
 GO
+
+USE [TicketManager]
+GO
+
+/****** Object:  Index [IX_Object_CreatedOn]    Script Date: 5/10/2021 5:55:11 PM ******/
+CREATE NONCLUSTERED INDEX [IX_Object_CreatedOn] ON [dbo].[Objects]
+(
+	[CreatedOn] DESC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+USE [TicketManager]
+GO
+
+SET ANSI_PADDING ON
+GO
+
+/****** Object:  Index [IX_ObjectName]    Script Date: 5/10/2021 5:55:32 PM ******/
+CREATE NONCLUSTERED INDEX [IX_ObjectName] ON [dbo].[Objects]
+(
+	[ObjectName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+USE [TicketManager]
+GO
+
+SET ANSI_PADDING ON
+GO
+
+/****** Object:  Index [IX_Objects]    Script Date: 5/10/2021 5:55:40 PM ******/
+CREATE NONCLUSTERED INDEX [IX_Objects] ON [dbo].[Objects]
+(
+	[TicketNumber] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+
 
