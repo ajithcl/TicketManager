@@ -46,6 +46,12 @@ namespace TicketManager
             this.lblTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbComments = new System.Windows.Forms.RadioButton();
@@ -62,6 +68,7 @@ namespace TicketManager
             this.label8 = new System.Windows.Forms.Label();
             this.dgvTickets = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDirectory = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -72,12 +79,8 @@ namespace TicketManager
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMail = new System.Windows.Forms.Button();
+            this.btnShowObjects = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -288,6 +291,48 @@ namespace TicketManager
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // ticketsToolStripMenuItem
+            // 
+            this.ticketsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.ticketsToolStripMenuItem.Text = "Tickets";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toExcelToolStripMenuItem});
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // toExcelToolStripMenuItem
+            // 
+            this.toExcelToolStripMenuItem.Name = "toExcelToolStripMenuItem";
+            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.toExcelToolStripMenuItem.Text = "to Excel";
+            // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
@@ -354,23 +399,25 @@ namespace TicketManager
             // 
             // btnSearchKeyWord
             // 
+            this.btnSearchKeyWord.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnSearchKeyWord.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchKeyWord.Image")));
             this.btnSearchKeyWord.Location = new System.Drawing.Point(1544, 22);
             this.btnSearchKeyWord.Name = "btnSearchKeyWord";
             this.btnSearchKeyWord.Size = new System.Drawing.Size(47, 40);
             this.btnSearchKeyWord.TabIndex = 15;
             this.btnSearchKeyWord.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSearchKeyWord.UseVisualStyleBackColor = true;
+            this.btnSearchKeyWord.UseVisualStyleBackColor = false;
             // 
             // btnDateFilter
             // 
+            this.btnDateFilter.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnDateFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnDateFilter.Image")));
             this.btnDateFilter.Location = new System.Drawing.Point(1144, 22);
             this.btnDateFilter.Name = "btnDateFilter";
             this.btnDateFilter.Size = new System.Drawing.Size(47, 40);
             this.btnDateFilter.TabIndex = 11;
             this.btnDateFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDateFilter.UseVisualStyleBackColor = true;
+            this.btnDateFilter.UseVisualStyleBackColor = false;
             // 
             // dtpCompltdTo
             // 
@@ -463,6 +510,9 @@ namespace TicketManager
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnShowObjects);
+            this.groupBox3.Controls.Add(this.btnMail);
+            this.groupBox3.Controls.Add(this.btnDirectory);
             this.groupBox3.Controls.Add(this.richTextBox1);
             this.groupBox3.Controls.Add(this.txtDescription);
             this.groupBox3.Controls.Add(this.comboBox1);
@@ -480,6 +530,18 @@ namespace TicketManager
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "View/Edit";
             // 
+            // btnDirectory
+            // 
+            this.btnDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDirectory.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDirectory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDirectory.Image = ((System.Drawing.Image)(resources.GetObject("btnDirectory.Image")));
+            this.btnDirectory.Location = new System.Drawing.Point(1597, 29);
+            this.btnDirectory.Name = "btnDirectory";
+            this.btnDirectory.Size = new System.Drawing.Size(53, 44);
+            this.btnDirectory.TabIndex = 22;
+            this.btnDirectory.UseVisualStyleBackColor = false;
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -487,7 +549,7 @@ namespace TicketManager
             this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(128, 129);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(863, 153);
+            this.richTextBox1.Size = new System.Drawing.Size(863, 168);
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "";
             // 
@@ -592,47 +654,29 @@ namespace TicketManager
             this.label12.TabIndex = 4;
             this.label12.Text = "Ticket No:";
             // 
-            // ticketsToolStripMenuItem
+            // btnMail
             // 
-            this.ticketsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
-            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
-            this.ticketsToolStripMenuItem.Text = "Tickets";
+            this.btnMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMail.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnMail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMail.Image = ((System.Drawing.Image)(resources.GetObject("btnMail.Image")));
+            this.btnMail.Location = new System.Drawing.Point(1597, 80);
+            this.btnMail.Name = "btnMail";
+            this.btnMail.Size = new System.Drawing.Size(53, 44);
+            this.btnMail.TabIndex = 23;
+            this.btnMail.UseVisualStyleBackColor = false;
             // 
-            // newToolStripMenuItem
+            // btnShowObjects
             // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toExcelToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
-            // toExcelToolStripMenuItem
-            // 
-            this.toExcelToolStripMenuItem.Name = "toExcelToolStripMenuItem";
-            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.toExcelToolStripMenuItem.Text = "to Excel";
+            this.btnShowObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowObjects.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnShowObjects.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowObjects.Image = ((System.Drawing.Image)(resources.GetObject("btnShowObjects.Image")));
+            this.btnShowObjects.Location = new System.Drawing.Point(1597, 130);
+            this.btnShowObjects.Name = "btnShowObjects";
+            this.btnShowObjects.Size = new System.Drawing.Size(53, 44);
+            this.btnShowObjects.TabIndex = 24;
+            this.btnShowObjects.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -711,6 +755,9 @@ namespace TicketManager
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toExcelToolStripMenuItem;
+        private System.Windows.Forms.Button btnDirectory;
+        private System.Windows.Forms.Button btnMail;
+        private System.Windows.Forms.Button btnShowObjects;
     }
 }
 
