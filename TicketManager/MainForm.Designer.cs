@@ -138,7 +138,6 @@ namespace TicketManager
             this.lblInProgress.Size = new System.Drawing.Size(42, 28);
             this.lblInProgress.TabIndex = 6;
             this.lblInProgress.Text = "100";
-            this.lblInProgress.Click += new System.EventHandler(this.lblInProgress_Click);
             // 
             // lblCompleted
             // 
@@ -172,7 +171,6 @@ namespace TicketManager
             this.lblAnalysis.Size = new System.Drawing.Size(42, 28);
             this.lblAnalysis.TabIndex = 8;
             this.lblAnalysis.Text = "100";
-            this.lblAnalysis.Click += new System.EventHandler(this.lblAnalysis_Click);
             // 
             // lblWaiting
             // 
@@ -208,7 +206,6 @@ namespace TicketManager
             this.label6.Size = new System.Drawing.Size(86, 28);
             this.label6.TabIndex = 8;
             this.label6.Text = "Analysis:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 

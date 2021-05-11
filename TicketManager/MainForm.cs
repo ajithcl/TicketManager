@@ -17,19 +17,7 @@ namespace TicketManager
             InitializeComponent();
         }
 
-        private void lblInProgress_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAnalysis_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
