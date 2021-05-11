@@ -68,6 +68,7 @@ namespace TicketManager
             this.label8 = new System.Windows.Forms.Label();
             this.dgvTickets = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnTimeStamp = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnShowObjects = new System.Windows.Forms.Button();
@@ -83,7 +84,6 @@ namespace TicketManager
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnTimeStamp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -290,7 +290,7 @@ namespace TicketManager
             this.settingsToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2103, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(1682, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -536,15 +536,28 @@ namespace TicketManager
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "View/Edit";
             // 
+            // btnTimeStamp
+            // 
+            this.btnTimeStamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTimeStamp.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnTimeStamp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnTimeStamp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTimeStamp.Image = ((System.Drawing.Image)(resources.GetObject("btnTimeStamp.Image")));
+            this.btnTimeStamp.Location = new System.Drawing.Point(63, 173);
+            this.btnTimeStamp.Name = "btnTimeStamp";
+            this.btnTimeStamp.Size = new System.Drawing.Size(53, 44);
+            this.btnTimeStamp.TabIndex = 27;
+            this.btnTimeStamp.UseVisualStyleBackColor = false;
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.White;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(1597, 324);
+            this.btnCancel.Location = new System.Drawing.Point(1578, 323);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(53, 44);
+            this.btnCancel.Size = new System.Drawing.Size(62, 45);
             this.btnCancel.TabIndex = 26;
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
@@ -554,9 +567,9 @@ namespace TicketManager
             this.btnSave.BackColor = System.Drawing.Color.GhostWhite;
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1597, 274);
+            this.btnSave.Location = new System.Drawing.Point(1578, 272);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(53, 44);
+            this.btnSave.Size = new System.Drawing.Size(62, 45);
             this.btnSave.TabIndex = 25;
             this.btnSave.UseVisualStyleBackColor = false;
             // 
@@ -566,9 +579,9 @@ namespace TicketManager
             this.btnShowObjects.BackColor = System.Drawing.Color.White;
             this.btnShowObjects.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnShowObjects.Image = ((System.Drawing.Image)(resources.GetObject("btnShowObjects.Image")));
-            this.btnShowObjects.Location = new System.Drawing.Point(1597, 134);
+            this.btnShowObjects.Location = new System.Drawing.Point(1578, 134);
             this.btnShowObjects.Name = "btnShowObjects";
-            this.btnShowObjects.Size = new System.Drawing.Size(53, 44);
+            this.btnShowObjects.Size = new System.Drawing.Size(62, 49);
             this.btnShowObjects.TabIndex = 24;
             this.btnShowObjects.UseVisualStyleBackColor = false;
             // 
@@ -578,9 +591,9 @@ namespace TicketManager
             this.btnMail.BackColor = System.Drawing.Color.White;
             this.btnMail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnMail.Image = ((System.Drawing.Image)(resources.GetObject("btnMail.Image")));
-            this.btnMail.Location = new System.Drawing.Point(1597, 84);
+            this.btnMail.Location = new System.Drawing.Point(1578, 84);
             this.btnMail.Name = "btnMail";
-            this.btnMail.Size = new System.Drawing.Size(53, 44);
+            this.btnMail.Size = new System.Drawing.Size(62, 45);
             this.btnMail.TabIndex = 23;
             this.btnMail.UseVisualStyleBackColor = false;
             // 
@@ -590,9 +603,9 @@ namespace TicketManager
             this.btnDirectory.BackColor = System.Drawing.Color.White;
             this.btnDirectory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDirectory.Image = ((System.Drawing.Image)(resources.GetObject("btnDirectory.Image")));
-            this.btnDirectory.Location = new System.Drawing.Point(1597, 33);
+            this.btnDirectory.Location = new System.Drawing.Point(1578, 33);
             this.btnDirectory.Name = "btnDirectory";
-            this.btnDirectory.Size = new System.Drawing.Size(53, 44);
+            this.btnDirectory.Size = new System.Drawing.Size(62, 45);
             this.btnDirectory.TabIndex = 22;
             this.btnDirectory.UseVisualStyleBackColor = false;
             // 
@@ -603,7 +616,7 @@ namespace TicketManager
             this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(128, 133);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1449, 235);
+            this.richTextBox1.Size = new System.Drawing.Size(1426, 235);
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "";
             // 
@@ -614,7 +627,7 @@ namespace TicketManager
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.Location = new System.Drawing.Point(128, 84);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(1449, 34);
+            this.txtDescription.Size = new System.Drawing.Size(1426, 34);
             this.txtDescription.TabIndex = 20;
             // 
             // comboBox1
@@ -707,19 +720,6 @@ namespace TicketManager
             this.label12.Size = new System.Drawing.Size(99, 28);
             this.label12.TabIndex = 4;
             this.label12.Text = "Ticket No:";
-            // 
-            // btnTimeStamp
-            // 
-            this.btnTimeStamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnTimeStamp.BackColor = System.Drawing.Color.GhostWhite;
-            this.btnTimeStamp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTimeStamp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTimeStamp.Image = ((System.Drawing.Image)(resources.GetObject("btnTimeStamp.Image")));
-            this.btnTimeStamp.Location = new System.Drawing.Point(63, 173);
-            this.btnTimeStamp.Name = "btnTimeStamp";
-            this.btnTimeStamp.Size = new System.Drawing.Size(53, 44);
-            this.btnTimeStamp.TabIndex = 27;
-            this.btnTimeStamp.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
