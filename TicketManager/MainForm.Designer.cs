@@ -29,6 +29,7 @@ namespace TicketManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblAssigned = new System.Windows.Forms.Label();
             this.lblInProgress = new System.Windows.Forms.Label();
@@ -46,8 +47,22 @@ namespace TicketManager
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnDateFilter = new System.Windows.Forms.Button();
+            this.dtpCompltdTo = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtpCompltdFrom = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbStatusFilter = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtKeyWord = new System.Windows.Forms.TextBox();
+            this.btnSearchKeyWord = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.rbTicketNo = new System.Windows.Forms.RadioButton();
+            this.rbComments = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -257,11 +272,164 @@ namespace TicketManager
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(76, 24);
             this.settingsToolStripMenuItem1.Text = "Settings";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox2.Controls.Add(this.rbComments);
+            this.groupBox2.Controls.Add(this.rbTicketNo);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.btnSearchKeyWord);
+            this.groupBox2.Controls.Add(this.btnDateFilter);
+            this.groupBox2.Controls.Add(this.dtpCompltdTo);
+            this.groupBox2.Controls.Add(this.txtKeyWord);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.dtpCompltdFrom);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.cmbStatusFilter);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Location = new System.Drawing.Point(12, 123);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1658, 90);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filters";
+            // 
+            // btnDateFilter
+            // 
+            this.btnDateFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnDateFilter.Image")));
+            this.btnDateFilter.Location = new System.Drawing.Point(1144, 22);
+            this.btnDateFilter.Name = "btnDateFilter";
+            this.btnDateFilter.Size = new System.Drawing.Size(47, 40);
+            this.btnDateFilter.TabIndex = 11;
+            this.btnDateFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDateFilter.UseVisualStyleBackColor = true;
+            // 
+            // dtpCompltdTo
+            // 
+            this.dtpCompltdTo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dtpCompltdTo.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCompltdTo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCompltdTo.Location = new System.Drawing.Point(820, 25);
+            this.dtpCompltdTo.Name = "dtpCompltdTo";
+            this.dtpCompltdTo.Size = new System.Drawing.Size(315, 31);
+            this.dtpCompltdTo.TabIndex = 13;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(778, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 28);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "to";
+            // 
+            // dtpCompltdFrom
+            // 
+            this.dtpCompltdFrom.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dtpCompltdFrom.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCompltdFrom.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCompltdFrom.Location = new System.Drawing.Point(454, 25);
+            this.dtpCompltdFrom.Name = "dtpCompltdFrom";
+            this.dtpCompltdFrom.Size = new System.Drawing.Size(311, 31);
+            this.dtpCompltdFrom.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Gray;
+            this.label9.Location = new System.Drawing.Point(285, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(160, 28);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Completed from:";
+            // 
+            // cmbStatusFilter
+            // 
+            this.cmbStatusFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbStatusFilter.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatusFilter.FormattingEnabled = true;
+            this.cmbStatusFilter.Location = new System.Drawing.Point(88, 25);
+            this.cmbStatusFilter.Name = "cmbStatusFilter";
+            this.cmbStatusFilter.Size = new System.Drawing.Size(158, 33);
+            this.cmbStatusFilter.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Gray;
+            this.label8.Location = new System.Drawing.Point(6, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 28);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Status:";
+            // 
+            // txtKeyWord
+            // 
+            this.txtKeyWord.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeyWord.Location = new System.Drawing.Point(1323, 25);
+            this.txtKeyWord.Name = "txtKeyWord";
+            this.txtKeyWord.Size = new System.Drawing.Size(211, 31);
+            this.txtKeyWord.TabIndex = 14;
+            // 
+            // btnSearchKeyWord
+            // 
+            this.btnSearchKeyWord.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchKeyWord.Image")));
+            this.btnSearchKeyWord.Location = new System.Drawing.Point(1544, 22);
+            this.btnSearchKeyWord.Name = "btnSearchKeyWord";
+            this.btnSearchKeyWord.Size = new System.Drawing.Size(47, 40);
+            this.btnSearchKeyWord.TabIndex = 15;
+            this.btnSearchKeyWord.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSearchKeyWord.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Location = new System.Drawing.Point(1224, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 28);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Keyword:";
+            // 
+            // rbTicketNo
+            // 
+            this.rbTicketNo.AutoSize = true;
+            this.rbTicketNo.Location = new System.Drawing.Point(1327, 60);
+            this.rbTicketNo.Name = "rbTicketNo";
+            this.rbTicketNo.Size = new System.Drawing.Size(74, 21);
+            this.rbTicketNo.TabIndex = 17;
+            this.rbTicketNo.TabStop = true;
+            this.rbTicketNo.Text = "Tickets";
+            this.rbTicketNo.UseVisualStyleBackColor = true;
+            // 
+            // rbComments
+            // 
+            this.rbComments.AutoSize = true;
+            this.rbComments.Location = new System.Drawing.Point(1419, 60);
+            this.rbComments.Name = "rbComments";
+            this.rbComments.Size = new System.Drawing.Size(95, 21);
+            this.rbComments.TabIndex = 18;
+            this.rbComments.TabStop = true;
+            this.rbComments.Text = "Comments";
+            this.rbComments.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1682, 739);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(1700, 786);
@@ -272,6 +440,8 @@ namespace TicketManager
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,6 +465,19 @@ namespace TicketManager
         private System.Windows.Forms.Label lblAssigned;
         private System.Windows.Forms.Label lblInProgress;
         private System.Windows.Forms.Label lblStart;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbStatusFilter;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dtpCompltdTo;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dtpCompltdFrom;
+        private System.Windows.Forms.Button btnDateFilter;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnSearchKeyWord;
+        private System.Windows.Forms.TextBox txtKeyWord;
+        private System.Windows.Forms.RadioButton rbComments;
+        private System.Windows.Forms.RadioButton rbTicketNo;
     }
 }
 
