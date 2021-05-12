@@ -20,6 +20,15 @@ namespace TicketManager
             insert,
             update
         }
+
+        // Settings for status label display
+        private enum StatusTypes
+        {
+            success,
+            error,
+            warning,
+            general
+        }
         private string recordAction;
         public MainForm()
         {
@@ -31,6 +40,7 @@ namespace TicketManager
         private void LoadControls()
         {
             cmbStatusFilter.Items.AddRange(Tickets.ticketStatusList);
+            cmbEditStatus.Items.AddRange(Tickets.ticketStatusList);
         }
 
         private void cmbStatusFilter_SelectedValueChanged(object sender, EventArgs e)
@@ -57,6 +67,7 @@ namespace TicketManager
         {
             if (recordAction == RecordAction.insert.ToString())
             {
+                // INSERT
                 Tickets.TicketData ticketData = new Tickets.TicketData
                 {
                     ticketNumber = txtTicketNo.Text,
@@ -66,10 +77,15 @@ namespace TicketManager
                     updatedOn = DateTime.Now.Date
                 };
 
-                tickets.Insert(ticketData);
+                bool result = tickets.Insert(ticketData);
+                if (result)
+                    DisplayStatus(StatusTypes.success.ToString());
+                else
+                    DisplayStatus(StatusTypes.error.ToString());
             }
             else if (recordAction == RecordAction.update.ToString())
             {
+                //UPDATE
                 Tickets.TicketData ticketData = new Tickets.TicketData
                 {
                     ticketNumber = txtTicketNo.Text,
@@ -86,6 +102,33 @@ namespace TicketManager
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             recordAction = RecordAction.update.ToString();
+        }
+
+        private void clearAllFields()
+        {
+            //TODO : Code for clearing fields.
+        }
+
+        private void DisplayStatus( string type)
+        {
+            lblStripStatus.Text = Tickets.LastError;
+
+            if (type == StatusTypes.error.ToString())
+            {
+                lblStripStatus.BackColor = System.Drawing.Color.Red;
+            }
+            else if (type == StatusTypes.success.ToString())
+            {
+                lblStripStatus.BackColor = System.Drawing.Color.LightGreen;
+            }
+            else if (type == StatusTypes.general.ToString())
+            {
+                lblStripStatus.BackColor = System.Drawing.Color.LightGray;
+            }
+            else if (type == StatusTypes.warning.ToString())
+            {
+                lblStripStatus.BackColor = System.Drawing.Color.LightYellow;
+            } 
         }
     }
 }
