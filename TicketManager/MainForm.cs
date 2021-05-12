@@ -13,6 +13,14 @@ namespace TicketManager
     public partial class MainForm : Form
     {
         private readonly Tickets tickets;
+
+        // Standard constant record actions
+        private enum RecordAction
+        {
+            insert,
+            update
+        }
+        private string recordAction;
         public MainForm()
         {
             InitializeComponent();
@@ -38,6 +46,46 @@ namespace TicketManager
 
         private void btnDateFilter_Click(object sender, EventArgs e)
         {
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            recordAction = RecordAction.insert.ToString();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (recordAction == RecordAction.insert.ToString())
+            {
+                Tickets.TicketData ticketData = new Tickets.TicketData
+                {
+                    ticketNumber = txtTicketNo.Text,
+                    description = txtDescription.Text,
+                    comments = rtbComments.Text,
+                    createdOn = DateTime.Now.Date,
+                    updatedOn = DateTime.Now.Date
+                };
+
+                tickets.Insert(ticketData);
+            }
+            else if (recordAction == RecordAction.update.ToString())
+            {
+                Tickets.TicketData ticketData = new Tickets.TicketData
+                {
+                    ticketNumber = txtTicketNo.Text,
+                    description = txtDescription.Text,
+                    comments = rtbComments.Text,
+                    createdOn = DateTime.Now.Date,
+                    updatedOn = DateTime.Now.Date
+                };
+
+                //TODO : Call update method
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            recordAction = RecordAction.update.ToString();
         }
     }
 }

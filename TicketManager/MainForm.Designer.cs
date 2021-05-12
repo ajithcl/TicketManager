@@ -74,9 +74,9 @@ namespace TicketManager
             this.btnShowObjects = new System.Windows.Forms.Button();
             this.btnMail = new System.Windows.Forms.Button();
             this.btnDirectory = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtbComments = new System.Windows.Forms.RichTextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbEditStatus = new System.Windows.Forms.ComboBox();
             this.txtTicketNo = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -290,7 +290,7 @@ namespace TicketManager
             this.settingsToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1682, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1682, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -307,19 +307,21 @@ namespace TicketManager
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // exportToolStripMenuItem
@@ -333,7 +335,7 @@ namespace TicketManager
             // toExcelToolStripMenuItem
             // 
             this.toExcelToolStripMenuItem.Name = "toExcelToolStripMenuItem";
-            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.toExcelToolStripMenuItem.Text = "to Excel";
             // 
             // settingsToolStripMenuItem1
@@ -521,9 +523,9 @@ namespace TicketManager
             this.groupBox3.Controls.Add(this.btnShowObjects);
             this.groupBox3.Controls.Add(this.btnMail);
             this.groupBox3.Controls.Add(this.btnDirectory);
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.rtbComments);
             this.groupBox3.Controls.Add(this.txtDescription);
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.cmbEditStatus);
             this.groupBox3.Controls.Add(this.txtTicketNo);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label16);
@@ -575,6 +577,7 @@ namespace TicketManager
             this.btnSave.Size = new System.Drawing.Size(62, 62);
             this.btnSave.TabIndex = 25;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnShowObjects
             // 
@@ -612,16 +615,16 @@ namespace TicketManager
             this.btnDirectory.TabIndex = 22;
             this.btnDirectory.UseVisualStyleBackColor = false;
             // 
-            // richTextBox1
+            // rtbComments
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtbComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(128, 130);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1416, 209);
-            this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "";
+            this.rtbComments.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbComments.Location = new System.Drawing.Point(128, 130);
+            this.rtbComments.Name = "rtbComments";
+            this.rtbComments.Size = new System.Drawing.Size(1416, 209);
+            this.rtbComments.TabIndex = 21;
+            this.rtbComments.Text = "";
             // 
             // txtDescription
             // 
@@ -633,15 +636,15 @@ namespace TicketManager
             this.txtDescription.Size = new System.Drawing.Size(1416, 34);
             this.txtDescription.TabIndex = 20;
             // 
-            // comboBox1
+            // cmbEditStatus
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(471, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 36);
-            this.comboBox1.TabIndex = 19;
+            this.cmbEditStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbEditStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEditStatus.FormattingEnabled = true;
+            this.cmbEditStatus.Location = new System.Drawing.Point(471, 30);
+            this.cmbEditStatus.Name = "cmbEditStatus";
+            this.cmbEditStatus.Size = new System.Drawing.Size(262, 36);
+            this.cmbEditStatus.TabIndex = 19;
             // 
             // txtTicketNo
             // 
@@ -812,8 +815,8 @@ namespace TicketManager
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox cmbEditStatus;
+        private System.Windows.Forms.RichTextBox rtbComments;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.ToolStripMenuItem ticketsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;

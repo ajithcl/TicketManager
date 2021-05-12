@@ -25,6 +25,12 @@ namespace TicketManager
         private readonly SqlDataAdapter sqlDA;
         private readonly DataTable dt;
 
+        public struct TicketData
+        {
+            public string ticketNumber, description, status, comments;
+            public DateTime createdOn, updatedOn, completedOn;
+        }
+
         // Constructor
         public Tickets()
         {
@@ -61,6 +67,38 @@ namespace TicketManager
             sqlConnection.Close();
 
             return dt;
+        }
+
+        // Insert data
+        public bool Insert(TicketData ticket)
+        {
+            try
+            {
+                sqlCommand.Parameters.Clear();
+                sqlCommand.CommandText = "INSERT INTO Tickets (TicketNumber,Description,Status,Comments,CreatedOn)" +
+                                         "VALUES (@ticketnumber, @description, @status, @comments, @createdon)";
+                sqlCommand.Parameters.AddWithValue("@ticketnumber", ticket.ticketNumber);
+                sqlCommand.Parameters.AddWithValue("@description", ticket.description);
+                sqlCommand.Parameters.AddWithValue("@status", ticket.status);
+                sqlCommand.Parameters.AddWithValue("@comments", ticket.comments);
+                sqlCommand.Parameters.AddWithValue("@createdon", ticket.createdOn);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlDA.InsertCommand = sqlCommand;
+
+                sqlConnection.Open();
+                sqlDA.InsertCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                LastError = "Record Inserted";
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LastError = $"Error while creating record.{ex.Message}";
+                return false;
+            }
         }
 
     }
