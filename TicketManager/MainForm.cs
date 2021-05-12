@@ -71,6 +71,7 @@ namespace TicketManager
                 Tickets.TicketData ticketData = new Tickets.TicketData
                 {
                     ticketNumber = txtTicketNo.Text,
+                    status = cmbEditStatus.SelectedItem.ToString(),
                     description = txtDescription.Text,
                     comments = rtbComments.Text,
                     createdOn = DateTime.Now.Date,

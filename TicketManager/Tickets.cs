@@ -75,13 +75,14 @@ namespace TicketManager
             try
             {
                 sqlCommand.Parameters.Clear();
-                sqlCommand.CommandText = "INSERT INTO Tickets (TicketNumber,Description,Status,Comments,CreatedOn)" +
-                                         "VALUES (@ticketnumber, @description, @status, @comments, @createdon)";
+                sqlCommand.CommandText = "INSERT INTO Tickets (TicketNumber,Description,Status,Comments,CreatedOn,UpdatedOn)" +
+                                         "VALUES (@ticketnumber, @description, @status, @comments, @createdon,@updatedon)";
                 sqlCommand.Parameters.AddWithValue("@ticketnumber", ticket.ticketNumber);
                 sqlCommand.Parameters.AddWithValue("@description", ticket.description);
                 sqlCommand.Parameters.AddWithValue("@status", ticket.status);
                 sqlCommand.Parameters.AddWithValue("@comments", ticket.comments);
                 sqlCommand.Parameters.AddWithValue("@createdon", ticket.createdOn);
+                sqlCommand.Parameters.AddWithValue("@updatedon", ticket.updatedOn);
 
                 sqlCommand.CommandType = CommandType.Text;
 
