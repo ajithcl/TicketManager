@@ -290,7 +290,7 @@ namespace TicketManager
             this.settingsToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1682, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1682, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -421,6 +421,7 @@ namespace TicketManager
             this.btnDateFilter.TabIndex = 11;
             this.btnDateFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDateFilter.UseVisualStyleBackColor = false;
+            this.btnDateFilter.Click += new System.EventHandler(this.btnDateFilter_Click);
             // 
             // dtpCompltdTo
             // 
@@ -483,6 +484,7 @@ namespace TicketManager
             this.cmbStatusFilter.Name = "cmbStatusFilter";
             this.cmbStatusFilter.Size = new System.Drawing.Size(158, 33);
             this.cmbStatusFilter.TabIndex = 11;
+            this.cmbStatusFilter.SelectedValueChanged += new System.EventHandler(this.cmbStatusFilter_SelectedValueChanged);
             // 
             // label8
             // 
@@ -560,6 +562,7 @@ namespace TicketManager
             this.btnCancel.Size = new System.Drawing.Size(62, 60);
             this.btnCancel.TabIndex = 26;
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
