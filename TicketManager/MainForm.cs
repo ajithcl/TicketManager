@@ -34,6 +34,7 @@ namespace TicketManager
         {
             InitializeComponent();
             LoadControls();
+            EnableEditFields(false);
             tickets = new Tickets();
 
         }
@@ -51,7 +52,8 @@ namespace TicketManager
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            clearAllFields();
+            EnableEditFields(false);
         }
 
         private void btnDateFilter_Click(object sender, EventArgs e)
@@ -61,6 +63,7 @@ namespace TicketManager
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             recordAction = RecordAction.insert.ToString();
+            EnableEditFields(true);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -80,7 +83,12 @@ namespace TicketManager
 
                 bool result = tickets.Insert(ticketData);
                 if (result)
+                {
+                    //SUCCESS
                     DisplayStatus(StatusTypes.success.ToString());
+                    clearAllFields();
+                    EnableEditFields(false);
+                }
                 else
                     DisplayStatus(StatusTypes.error.ToString());
             }
@@ -103,11 +111,28 @@ namespace TicketManager
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             recordAction = RecordAction.update.ToString();
+            EnableEditFields(true);
         }
 
         private void clearAllFields()
         {
             //TODO : Code for clearing fields.
+            txtTicketNo.Text = "";
+            txtDescription.Text = "";
+            rtbComments.Text = "";
+        }
+        private void EnableEditFields(bool enable)
+        {
+            txtTicketNo.Enabled = enable;
+            txtDescription.Enabled = enable;
+            cmbEditStatus.Enabled = enable;
+            rtbComments.Enabled = enable;
+            btnCancel.Enabled = enable;
+            btnSave.Enabled = enable;
+            btnDirectory.Enabled = enable;
+            btnShowObjects.Enabled = enable;
+            btnMail.Enabled = enable;
+            btnTimeStamp.Enabled = enable;
         }
 
         private void DisplayStatus( string type)
