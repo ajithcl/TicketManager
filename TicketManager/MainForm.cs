@@ -40,7 +40,9 @@ namespace TicketManager
         }
         private void LoadControls()
         {
+            cmbStatusFilter.Items.Add("All");
             cmbStatusFilter.Items.AddRange(Tickets.ticketStatusList);
+
             cmbEditStatus.Items.AddRange(Tickets.ticketStatusList);
         }
 
@@ -120,6 +122,7 @@ namespace TicketManager
             txtTicketNo.Text = "";
             txtDescription.Text = "";
             rtbComments.Text = "";
+            cmbEditStatus.SelectedIndex = -1;
         }
         private void EnableEditFields(bool enable)
         {
@@ -155,6 +158,36 @@ namespace TicketManager
             {
                 lblStripStatus.BackColor = System.Drawing.Color.LightYellow;
             } 
+        }
+
+        private void dgvTickets_SelectionChanged(object sender, EventArgs e)
+        {
+            if ((dgvTickets.SelectedRows.Count) == 0)
+                    return;
+            var row = dgvTickets.SelectedRows[0];
+            if (row == null)
+                return;
+            DataRowView rowView = (DataRowView)row.DataBoundItem;
+            if (rowView == null)
+                return;
+
+            Tickets.TicketData ticketData = new Tickets.TicketData
+            {
+                ticketNumber = rowView.Row["TicketNumber"].ToString(),
+                description = rowView.Row["Description"].ToString(),
+                status = rowView.Row["Status"].ToString(),
+            };
+
+            ViewFieldData(ticketData);
+
+        }
+
+        private void ViewFieldData(Tickets.TicketData data)
+        {
+            txtTicketNo.Text = data.ticketNumber;
+            txtDescription.Text = data.description;
+            cmbEditStatus.Text = data.status;
+
         }
     }
 }

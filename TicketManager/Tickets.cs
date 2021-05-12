@@ -12,7 +12,7 @@ namespace TicketManager
     class Tickets
     {
         public static string[] ticketStatusList = new string[]
-                                            { "All", "Assigned", "NeedToStart","Analysis", "In Progress", "Completed","Done","Waiting"};
+                                            { "Assigned", "NeedToStart","Analysis", "In Progress", "Completed","Done","Waiting"};
         public static string LastError
         {
             get;set;

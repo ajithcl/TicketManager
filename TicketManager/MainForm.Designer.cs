@@ -290,7 +290,7 @@ namespace TicketManager
             this.settingsToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1682, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1682, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -512,6 +512,7 @@ namespace TicketManager
             this.dgvTickets.RowTemplate.Height = 24;
             this.dgvTickets.Size = new System.Drawing.Size(1658, 117);
             this.dgvTickets.TabIndex = 11;
+            this.dgvTickets.SelectionChanged += new System.EventHandler(this.dgvTickets_SelectionChanged);
             // 
             // groupBox3
             // 
