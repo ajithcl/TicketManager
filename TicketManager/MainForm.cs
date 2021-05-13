@@ -56,6 +56,7 @@ namespace TicketManager
         {
             clearAllFields();
             EnableEditFields(false);
+            tickets.CloseSqlConection();
         }
 
         private void btnDateFilter_Click(object sender, EventArgs e)
@@ -94,6 +95,10 @@ namespace TicketManager
                 DisplayStatus(StatusTypes.success.ToString());
                 clearAllFields();
                 EnableEditFields(false);
+
+                // Refresh grid view
+                string status = cmbStatusFilter.Text;
+                dgvTickets.DataSource = tickets.GetDataBasedStatus(status);
             }
             else
                 DisplayStatus(StatusTypes.error.ToString());
@@ -105,6 +110,7 @@ namespace TicketManager
             EnableEditFields(true);
         }
 
+        #region clearAllFields
         private void clearAllFields()
         {
             //TODO : Code for clearing fields.
@@ -113,9 +119,17 @@ namespace TicketManager
             rtbComments.Text = "";
             cmbEditStatus.SelectedIndex = -1;
         }
+        #endregion
+
+        #region EnableEditFields
         private void EnableEditFields(bool enable)
         {
-            txtTicketNo.Enabled = enable;
+            if (enable && recordAction == RecordAction.insert.ToString())
+            {
+                txtTicketNo.Enabled = enable;
+            }
+            else
+                txtTicketNo.Enabled = false;
             txtDescription.Enabled = enable;
             cmbEditStatus.Enabled = enable;
             rtbComments.Enabled = enable;
@@ -126,7 +140,9 @@ namespace TicketManager
             btnMail.Enabled = enable;
             btnTimeStamp.Enabled = enable;
         }
+        #endregion
 
+        #region DisplayStatus
         private void DisplayStatus( string type)
         {
             lblStripStatus.Text = Tickets.LastError;
@@ -148,6 +164,7 @@ namespace TicketManager
                 lblStripStatus.BackColor = System.Drawing.Color.LightYellow;
             } 
         }
+        #endregion
 
         private void dgvTickets_SelectionChanged(object sender, EventArgs e)
         {
@@ -172,13 +189,14 @@ namespace TicketManager
 
         }
 
+        #region ViewFieldData
         private void ViewFieldData(Tickets.TicketData data)
         {
             txtTicketNo.Text = data.ticketNumber;
             txtDescription.Text = data.description;
             cmbEditStatus.Text = data.status;
-            rbComments.Text = data.comments;
-
+            rtbComments.Text = data.comments;
         }
+        #endregion
     }
 }

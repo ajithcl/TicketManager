@@ -28,7 +28,8 @@ namespace TicketManager
         public struct TicketData
         {
             public string ticketNumber, description, status, comments;
-            public DateTime createdOn, updatedOn, completedOn;
+            public DateTime createdOn, updatedOn;
+            public Nullable<DateTime> completedOn;
         }
 
         // Constructor
@@ -43,6 +44,7 @@ namespace TicketManager
         }
 
         // Access records based on Ticket Status
+        #region GetDataBasedStatus
         public DataTable GetDataBasedStatus(string status)
         {
             sqlCommand.Parameters.Clear();
@@ -68,6 +70,7 @@ namespace TicketManager
 
             return dt;
         }
+        #endregion
 
         #region  Insert
         public bool Insert(TicketData ticket)
@@ -106,7 +109,6 @@ namespace TicketManager
         #endregion
 
         #region update
-        //Update record
         public bool Update(TicketData ticket)
         {
             ticket.updatedOn = DateTime.Now.Date;
@@ -116,13 +118,21 @@ namespace TicketManager
                 sqlCommand.Parameters.Clear();
                 sqlCommand.CommandText = "UPDATE Tickets SET Description = @description, " +
                                                             "Status = @status, " +
-                                                            "Comments = @comments" +
-                                                            " WHERE TicketNumber = @ticketnumber";
+                                                            "Comments = @comments, " +
+                                                            "UpdatedOn = @updatedon, " + 
+                                                            "CompletedOn = @completedon " + 
+                                                            "WHERE TicketNumber = @ticketnumber";
+
                 sqlCommand.Parameters.AddWithValue("@ticketnumber", ticket.ticketNumber);
                 sqlCommand.Parameters.AddWithValue("@description", ticket.description);
                 sqlCommand.Parameters.AddWithValue("@status", ticket.status);
                 sqlCommand.Parameters.AddWithValue("@comments", ticket.comments);
                 sqlCommand.Parameters.AddWithValue("@updatedon", ticket.updatedOn);
+
+                if (ticket.status.Trim() == "Completed")
+                    sqlCommand.Parameters.AddWithValue("@completedon", DateTime.Now.Date);
+                else
+                    sqlCommand.Parameters.AddWithValue("@completedon", DBNull.Value);
 
                 sqlCommand.CommandType = CommandType.Text;
 
@@ -144,5 +154,16 @@ namespace TicketManager
         }
         #endregion
 
+
+        #region CloseSqlConection
+        public void CloseSqlConection()
+        {
+            // Explicitly closing connection
+            if (sqlConnection != null && sqlConnection.State == ConnectionState.Open)
+            {
+                sqlConnection.Close();
+            }
+        }
+        #endregion
     }
 }
