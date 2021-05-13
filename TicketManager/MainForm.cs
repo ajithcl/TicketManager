@@ -70,44 +70,33 @@ namespace TicketManager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            bool result = false;
+            Tickets.TicketData ticketData = new Tickets.TicketData
+            {
+                ticketNumber = txtTicketNo.Text,
+                status = cmbEditStatus.Text,
+                description = txtDescription.Text,
+                comments = rtbComments.Text
+            };
             if (recordAction == RecordAction.insert.ToString())
             {
                 // INSERT
-                Tickets.TicketData ticketData = new Tickets.TicketData
-                {
-                    ticketNumber = txtTicketNo.Text,
-                    status = cmbEditStatus.SelectedItem.ToString(),
-                    description = txtDescription.Text,
-                    comments = rtbComments.Text,
-                    createdOn = DateTime.Now.Date,
-                    updatedOn = DateTime.Now.Date
-                };
-
-                bool result = tickets.Insert(ticketData);
-                if (result)
-                {
-                    //SUCCESS
-                    DisplayStatus(StatusTypes.success.ToString());
-                    clearAllFields();
-                    EnableEditFields(false);
-                }
-                else
-                    DisplayStatus(StatusTypes.error.ToString());
+                result = tickets.Insert(ticketData);
             }
             else if (recordAction == RecordAction.update.ToString())
             {
-                //UPDATE
-                Tickets.TicketData ticketData = new Tickets.TicketData
-                {
-                    ticketNumber = txtTicketNo.Text,
-                    description = txtDescription.Text,
-                    comments = rtbComments.Text,
-                    createdOn = DateTime.Now.Date,
-                    updatedOn = DateTime.Now.Date
-                };
-
-                //TODO : Call update method
+                // UPDATE
+                 result = tickets.Update(ticketData);
             }
+            if (result)
+            {
+                //SUCCESS
+                DisplayStatus(StatusTypes.success.ToString());
+                clearAllFields();
+                EnableEditFields(false);
+            }
+            else
+                DisplayStatus(StatusTypes.error.ToString());
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -176,6 +165,7 @@ namespace TicketManager
                 ticketNumber = rowView.Row["TicketNumber"].ToString(),
                 description = rowView.Row["Description"].ToString(),
                 status = rowView.Row["Status"].ToString(),
+                comments = rowView.Row["Comments"].ToString()
             };
 
             ViewFieldData(ticketData);
@@ -187,6 +177,7 @@ namespace TicketManager
             txtTicketNo.Text = data.ticketNumber;
             txtDescription.Text = data.description;
             cmbEditStatus.Text = data.status;
+            rbComments.Text = data.comments;
 
         }
     }

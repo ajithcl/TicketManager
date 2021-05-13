@@ -69,9 +69,11 @@ namespace TicketManager
             return dt;
         }
 
-        // Insert data
+        #region  Insert
         public bool Insert(TicketData ticket)
         {
+            ticket.updatedOn = DateTime.Now.Date;
+            ticket.createdOn = DateTime.Now.Date;
             try
             {
                 sqlCommand.Parameters.Clear();
@@ -92,7 +94,7 @@ namespace TicketManager
                 sqlDA.InsertCommand.ExecuteNonQuery();
                 sqlConnection.Close();
 
-                LastError = "Record Inserted";
+                LastError = "Ticket Record created.";
                 return true;
             }
             catch (Exception ex)
@@ -101,6 +103,46 @@ namespace TicketManager
                 return false;
             }
         }
+        #endregion
+
+        #region update
+        //Update record
+        public bool Update(TicketData ticket)
+        {
+            ticket.updatedOn = DateTime.Now.Date;
+
+            try
+            {
+                sqlCommand.Parameters.Clear();
+                sqlCommand.CommandText = "UPDATE Tickets SET Description = @description, " +
+                                                            "Status = @status, " +
+                                                            "Comments = @comments" +
+                                                            " WHERE TicketNumber = @ticketnumber";
+                sqlCommand.Parameters.AddWithValue("@ticketnumber", ticket.ticketNumber);
+                sqlCommand.Parameters.AddWithValue("@description", ticket.description);
+                sqlCommand.Parameters.AddWithValue("@status", ticket.status);
+                sqlCommand.Parameters.AddWithValue("@comments", ticket.comments);
+                sqlCommand.Parameters.AddWithValue("@updatedon", ticket.updatedOn);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlDA.UpdateCommand = sqlCommand;
+
+                sqlConnection.Open();
+                sqlDA.UpdateCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                LastError = "Ticket updated.";
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LastError = $"Update Error. {ex.Message}";
+                return false;
+            }
+            
+        }
+        #endregion
 
     }
 }
