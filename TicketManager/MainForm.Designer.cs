@@ -367,7 +367,7 @@ namespace TicketManager
             // rbComments
             // 
             this.rbComments.AutoSize = true;
-            this.rbComments.Location = new System.Drawing.Point(1419, 60);
+            this.rbComments.Location = new System.Drawing.Point(1140, 60);
             this.rbComments.Name = "rbComments";
             this.rbComments.Size = new System.Drawing.Size(95, 21);
             this.rbComments.TabIndex = 18;
@@ -378,7 +378,7 @@ namespace TicketManager
             // rbTicketNo
             // 
             this.rbTicketNo.AutoSize = true;
-            this.rbTicketNo.Location = new System.Drawing.Point(1327, 60);
+            this.rbTicketNo.Location = new System.Drawing.Point(1048, 60);
             this.rbTicketNo.Name = "rbTicketNo";
             this.rbTicketNo.Size = new System.Drawing.Size(74, 21);
             this.rbTicketNo.TabIndex = 17;
@@ -392,7 +392,7 @@ namespace TicketManager
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(1224, 25);
+            this.label11.Location = new System.Drawing.Point(945, 25);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(93, 28);
             this.label11.TabIndex = 16;
@@ -402,7 +402,7 @@ namespace TicketManager
             // 
             this.btnSearchKeyWord.BackColor = System.Drawing.Color.White;
             this.btnSearchKeyWord.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchKeyWord.Image")));
-            this.btnSearchKeyWord.Location = new System.Drawing.Point(1544, 22);
+            this.btnSearchKeyWord.Location = new System.Drawing.Point(1265, 21);
             this.btnSearchKeyWord.Name = "btnSearchKeyWord";
             this.btnSearchKeyWord.Size = new System.Drawing.Size(58, 59);
             this.btnSearchKeyWord.TabIndex = 15;
@@ -413,9 +413,9 @@ namespace TicketManager
             // 
             this.btnDateFilter.BackColor = System.Drawing.Color.White;
             this.btnDateFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnDateFilter.Image")));
-            this.btnDateFilter.Location = new System.Drawing.Point(1144, 22);
+            this.btnDateFilter.Location = new System.Drawing.Point(867, 21);
             this.btnDateFilter.Name = "btnDateFilter";
-            this.btnDateFilter.Size = new System.Drawing.Size(56, 59);
+            this.btnDateFilter.Size = new System.Drawing.Size(58, 59);
             this.btnDateFilter.TabIndex = 11;
             this.btnDateFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDateFilter.UseVisualStyleBackColor = false;
@@ -426,15 +426,15 @@ namespace TicketManager
             this.dtpCompltdTo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dtpCompltdTo.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCompltdTo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCompltdTo.Location = new System.Drawing.Point(820, 25);
+            this.dtpCompltdTo.Location = new System.Drawing.Point(681, 25);
             this.dtpCompltdTo.Name = "dtpCompltdTo";
-            this.dtpCompltdTo.Size = new System.Drawing.Size(315, 31);
+            this.dtpCompltdTo.Size = new System.Drawing.Size(180, 31);
             this.dtpCompltdTo.TabIndex = 13;
             // 
             // txtKeyWord
             // 
             this.txtKeyWord.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKeyWord.Location = new System.Drawing.Point(1323, 25);
+            this.txtKeyWord.Location = new System.Drawing.Point(1044, 25);
             this.txtKeyWord.Name = "txtKeyWord";
             this.txtKeyWord.Size = new System.Drawing.Size(211, 31);
             this.txtKeyWord.TabIndex = 14;
@@ -445,7 +445,7 @@ namespace TicketManager
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(778, 25);
+            this.label10.Location = new System.Drawing.Point(642, 25);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 28);
             this.label10.TabIndex = 10;
@@ -458,7 +458,7 @@ namespace TicketManager
             this.dtpCompltdFrom.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCompltdFrom.Location = new System.Drawing.Point(454, 25);
             this.dtpCompltdFrom.Name = "dtpCompltdFrom";
-            this.dtpCompltdFrom.Size = new System.Drawing.Size(311, 31);
+            this.dtpCompltdFrom.Size = new System.Drawing.Size(180, 31);
             this.dtpCompltdFrom.TabIndex = 12;
             // 
             // label9
@@ -753,6 +753,7 @@ namespace TicketManager
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TicketManager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
