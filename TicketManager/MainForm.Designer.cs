@@ -84,11 +84,14 @@ namespace TicketManager
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTickets)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -403,7 +406,7 @@ namespace TicketManager
             this.btnSearchKeyWord.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchKeyWord.Image")));
             this.btnSearchKeyWord.Location = new System.Drawing.Point(1544, 22);
             this.btnSearchKeyWord.Name = "btnSearchKeyWord";
-            this.btnSearchKeyWord.Size = new System.Drawing.Size(47, 40);
+            this.btnSearchKeyWord.Size = new System.Drawing.Size(58, 59);
             this.btnSearchKeyWord.TabIndex = 15;
             this.btnSearchKeyWord.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearchKeyWord.UseVisualStyleBackColor = false;
@@ -414,7 +417,7 @@ namespace TicketManager
             this.btnDateFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnDateFilter.Image")));
             this.btnDateFilter.Location = new System.Drawing.Point(1144, 22);
             this.btnDateFilter.Name = "btnDateFilter";
-            this.btnDateFilter.Size = new System.Drawing.Size(47, 40);
+            this.btnDateFilter.Size = new System.Drawing.Size(56, 59);
             this.btnDateFilter.TabIndex = 11;
             this.btnDateFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDateFilter.UseVisualStyleBackColor = false;
@@ -528,7 +531,7 @@ namespace TicketManager
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Location = new System.Drawing.Point(12, 342);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1656, 385);
+            this.groupBox3.Size = new System.Drawing.Size(1646, 361);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "View/Edit";
@@ -540,7 +543,7 @@ namespace TicketManager
             this.btnTimeStamp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnTimeStamp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTimeStamp.Image = ((System.Drawing.Image)(resources.GetObject("btnTimeStamp.Image")));
-            this.btnTimeStamp.Location = new System.Drawing.Point(63, 173);
+            this.btnTimeStamp.Location = new System.Drawing.Point(63, 211);
             this.btnTimeStamp.Name = "btnTimeStamp";
             this.btnTimeStamp.Size = new System.Drawing.Size(53, 44);
             this.btnTimeStamp.TabIndex = 27;
@@ -552,9 +555,9 @@ namespace TicketManager
             this.btnCancel.BackColor = System.Drawing.Color.White;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(1578, 323);
+            this.btnCancel.Location = new System.Drawing.Point(1568, 279);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(62, 45);
+            this.btnCancel.Size = new System.Drawing.Size(62, 60);
             this.btnCancel.TabIndex = 26;
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
@@ -564,9 +567,9 @@ namespace TicketManager
             this.btnSave.BackColor = System.Drawing.Color.GhostWhite;
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1578, 272);
+            this.btnSave.Location = new System.Drawing.Point(1568, 211);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(62, 45);
+            this.btnSave.Size = new System.Drawing.Size(62, 62);
             this.btnSave.TabIndex = 25;
             this.btnSave.UseVisualStyleBackColor = false;
             // 
@@ -576,9 +579,9 @@ namespace TicketManager
             this.btnShowObjects.BackColor = System.Drawing.Color.White;
             this.btnShowObjects.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnShowObjects.Image = ((System.Drawing.Image)(resources.GetObject("btnShowObjects.Image")));
-            this.btnShowObjects.Location = new System.Drawing.Point(1578, 134);
+            this.btnShowObjects.Location = new System.Drawing.Point(1568, 142);
             this.btnShowObjects.Name = "btnShowObjects";
-            this.btnShowObjects.Size = new System.Drawing.Size(62, 49);
+            this.btnShowObjects.Size = new System.Drawing.Size(62, 63);
             this.btnShowObjects.TabIndex = 24;
             this.btnShowObjects.UseVisualStyleBackColor = false;
             // 
@@ -588,9 +591,9 @@ namespace TicketManager
             this.btnMail.BackColor = System.Drawing.Color.White;
             this.btnMail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnMail.Image = ((System.Drawing.Image)(resources.GetObject("btnMail.Image")));
-            this.btnMail.Location = new System.Drawing.Point(1578, 84);
+            this.btnMail.Location = new System.Drawing.Point(1568, 71);
             this.btnMail.Name = "btnMail";
-            this.btnMail.Size = new System.Drawing.Size(62, 45);
+            this.btnMail.Size = new System.Drawing.Size(62, 63);
             this.btnMail.TabIndex = 23;
             this.btnMail.UseVisualStyleBackColor = false;
             // 
@@ -600,9 +603,9 @@ namespace TicketManager
             this.btnDirectory.BackColor = System.Drawing.Color.White;
             this.btnDirectory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDirectory.Image = ((System.Drawing.Image)(resources.GetObject("btnDirectory.Image")));
-            this.btnDirectory.Location = new System.Drawing.Point(1578, 33);
+            this.btnDirectory.Location = new System.Drawing.Point(1568, 11);
             this.btnDirectory.Name = "btnDirectory";
-            this.btnDirectory.Size = new System.Drawing.Size(62, 45);
+            this.btnDirectory.Size = new System.Drawing.Size(62, 55);
             this.btnDirectory.TabIndex = 22;
             this.btnDirectory.UseVisualStyleBackColor = false;
             // 
@@ -611,9 +614,9 @@ namespace TicketManager
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(128, 133);
+            this.richTextBox1.Location = new System.Drawing.Point(128, 130);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1426, 235);
+            this.richTextBox1.Size = new System.Drawing.Size(1416, 209);
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "";
             // 
@@ -622,9 +625,9 @@ namespace TicketManager
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(128, 84);
+            this.txtDescription.Location = new System.Drawing.Point(128, 81);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(1426, 34);
+            this.txtDescription.Size = new System.Drawing.Size(1416, 34);
             this.txtDescription.TabIndex = 20;
             // 
             // comboBox1
@@ -632,7 +635,7 @@ namespace TicketManager
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(471, 33);
+            this.comboBox1.Location = new System.Drawing.Point(471, 30);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(262, 36);
             this.comboBox1.TabIndex = 19;
@@ -641,7 +644,7 @@ namespace TicketManager
             // 
             this.txtTicketNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTicketNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTicketNo.Location = new System.Drawing.Point(128, 33);
+            this.txtTicketNo.Location = new System.Drawing.Point(128, 30);
             this.txtTicketNo.Name = "txtTicketNo";
             this.txtTicketNo.Size = new System.Drawing.Size(240, 34);
             this.txtTicketNo.TabIndex = 10;
@@ -652,7 +655,7 @@ namespace TicketManager
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Gray;
-            this.label17.Location = new System.Drawing.Point(6, 133);
+            this.label17.Location = new System.Drawing.Point(6, 130);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(110, 28);
             this.label17.TabIndex = 9;
@@ -664,7 +667,7 @@ namespace TicketManager
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(6, 84);
+            this.label16.Location = new System.Drawing.Point(6, 81);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(116, 28);
             this.label16.TabIndex = 8;
@@ -676,7 +679,7 @@ namespace TicketManager
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Gray;
-            this.label15.Location = new System.Drawing.Point(948, 33);
+            this.label15.Location = new System.Drawing.Point(948, 30);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(126, 28);
             this.label15.TabIndex = 7;
@@ -688,7 +691,7 @@ namespace TicketManager
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(759, 33);
+            this.label14.Location = new System.Drawing.Point(759, 30);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(92, 28);
             this.label14.TabIndex = 6;
@@ -700,7 +703,7 @@ namespace TicketManager
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(393, 33);
+            this.label13.Location = new System.Drawing.Point(396, 30);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(69, 28);
             this.label13.TabIndex = 5;
@@ -712,17 +715,35 @@ namespace TicketManager
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Gray;
-            this.label12.Location = new System.Drawing.Point(6, 33);
+            this.label12.Location = new System.Drawing.Point(6, 30);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(99, 28);
             this.label12.TabIndex = 4;
             this.label12.Text = "Ticket No:";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStripStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 713);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1682, 26);
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStripStatus
+            // 
+            this.lblStripStatus.Name = "lblStripStatus";
+            this.lblStripStatus.Size = new System.Drawing.Size(15, 20);
+            this.lblStripStatus.Text = "..";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1682, 739);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dgvTickets);
             this.Controls.Add(this.groupBox2);
@@ -741,6 +762,8 @@ namespace TicketManager
             ((System.ComponentModel.ISupportInitialize)(this.dgvTickets)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -801,6 +824,8 @@ namespace TicketManager
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnTimeStamp;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStripStatus;
     }
 }
 
