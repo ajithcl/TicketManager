@@ -33,10 +33,10 @@ namespace TicketManager
         public MainForm()
         {
             InitializeComponent();
+
             LoadControls();
             EnableEditFields(false);
             tickets = new Tickets();
-
         }
         private void LoadControls()
         {
