@@ -96,8 +96,6 @@ namespace TicketManager
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.lblAssigned);
             this.groupBox1.Controls.Add(this.lblInProgress);
@@ -290,7 +288,7 @@ namespace TicketManager
             this.settingsToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1682, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1682, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -307,21 +305,21 @@ namespace TicketManager
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // exportToolStripMenuItem
@@ -335,7 +333,7 @@ namespace TicketManager
             // toExcelToolStripMenuItem
             // 
             this.toExcelToolStripMenuItem.Name = "toExcelToolStripMenuItem";
-            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.toExcelToolStripMenuItem.Text = "to Excel";
             // 
             // settingsToolStripMenuItem1
@@ -346,8 +344,6 @@ namespace TicketManager
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox2.Controls.Add(this.rbComments);
             this.groupBox2.Controls.Add(this.rbTicketNo);
@@ -502,9 +498,9 @@ namespace TicketManager
             // 
             // dgvTickets
             // 
-            this.dgvTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTickets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvTickets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTickets.Location = new System.Drawing.Point(12, 219);
             this.dgvTickets.Name = "dgvTickets";
@@ -516,8 +512,7 @@ namespace TicketManager
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.Controls.Add(this.btnTimeStamp);
             this.groupBox3.Controls.Add(this.btnCancel);
             this.groupBox3.Controls.Add(this.btnSave);
@@ -536,7 +531,7 @@ namespace TicketManager
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Location = new System.Drawing.Point(12, 342);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1646, 361);
+            this.groupBox3.Size = new System.Drawing.Size(1658, 361);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "View/Edit";
@@ -560,7 +555,7 @@ namespace TicketManager
             this.btnCancel.BackColor = System.Drawing.Color.White;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(1568, 279);
+            this.btnCancel.Location = new System.Drawing.Point(1580, 279);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(62, 60);
             this.btnCancel.TabIndex = 26;
@@ -573,7 +568,7 @@ namespace TicketManager
             this.btnSave.BackColor = System.Drawing.Color.GhostWhite;
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1568, 211);
+            this.btnSave.Location = new System.Drawing.Point(1580, 211);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(62, 62);
             this.btnSave.TabIndex = 25;
@@ -586,7 +581,7 @@ namespace TicketManager
             this.btnShowObjects.BackColor = System.Drawing.Color.White;
             this.btnShowObjects.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnShowObjects.Image = ((System.Drawing.Image)(resources.GetObject("btnShowObjects.Image")));
-            this.btnShowObjects.Location = new System.Drawing.Point(1568, 142);
+            this.btnShowObjects.Location = new System.Drawing.Point(1580, 142);
             this.btnShowObjects.Name = "btnShowObjects";
             this.btnShowObjects.Size = new System.Drawing.Size(62, 63);
             this.btnShowObjects.TabIndex = 24;
@@ -598,7 +593,7 @@ namespace TicketManager
             this.btnMail.BackColor = System.Drawing.Color.White;
             this.btnMail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnMail.Image = ((System.Drawing.Image)(resources.GetObject("btnMail.Image")));
-            this.btnMail.Location = new System.Drawing.Point(1568, 71);
+            this.btnMail.Location = new System.Drawing.Point(1580, 71);
             this.btnMail.Name = "btnMail";
             this.btnMail.Size = new System.Drawing.Size(62, 63);
             this.btnMail.TabIndex = 23;
@@ -610,7 +605,7 @@ namespace TicketManager
             this.btnDirectory.BackColor = System.Drawing.Color.White;
             this.btnDirectory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDirectory.Image = ((System.Drawing.Image)(resources.GetObject("btnDirectory.Image")));
-            this.btnDirectory.Location = new System.Drawing.Point(1568, 11);
+            this.btnDirectory.Location = new System.Drawing.Point(1580, 11);
             this.btnDirectory.Name = "btnDirectory";
             this.btnDirectory.Size = new System.Drawing.Size(62, 55);
             this.btnDirectory.TabIndex = 22;
@@ -618,8 +613,7 @@ namespace TicketManager
             // 
             // rtbComments
             // 
-            this.rtbComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbComments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rtbComments.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbComments.Location = new System.Drawing.Point(128, 130);
             this.rtbComments.Name = "rtbComments";
@@ -629,8 +623,7 @@ namespace TicketManager
             // 
             // txtDescription
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.Location = new System.Drawing.Point(128, 81);
             this.txtDescription.Name = "txtDescription";
@@ -758,7 +751,7 @@ namespace TicketManager
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(1700, 786);
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TicketManager";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
