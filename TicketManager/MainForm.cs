@@ -103,6 +103,9 @@ namespace TicketManager
                 // Refresh grid view
                 string status = cmbStatusFilter.Text;
                 dgvTickets.DataSource = tickets.GetDataBasedStatus(status);
+
+                // Status count refresh
+                RefreshStatusCounts();
             }
             else
                 DisplayStatus(Tickets.LastError,StatusTypes.error);
