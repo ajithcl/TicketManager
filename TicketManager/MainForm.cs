@@ -63,6 +63,7 @@ namespace TicketManager
 
         private void btnDateFilter_Click(object sender, EventArgs e)
         {
+            DisplayStatus("Completion date filter applied.", StatusTypes.general);
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -252,6 +253,11 @@ namespace TicketManager
         private void MainForm_Load(object sender, EventArgs e)
         {
             RefreshStatusCounts();
+        }
+
+        private void btnSearchKeyWord_Click(object sender, EventArgs e)
+        {
+            DisplayStatus("Keyword search filter applied.", StatusTypes.general);
         }
     }
 }

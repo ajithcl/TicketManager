@@ -408,6 +408,7 @@ namespace TicketManager
             this.btnSearchKeyWord.TabIndex = 15;
             this.btnSearchKeyWord.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearchKeyWord.UseVisualStyleBackColor = false;
+            this.btnSearchKeyWord.Click += new System.EventHandler(this.btnSearchKeyWord_Click);
             // 
             // btnDateFilter
             // 

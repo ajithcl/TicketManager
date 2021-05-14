@@ -29,10 +29,9 @@ namespace TicketManager
         {
             public string ticketNumber, description, status, comments;
             public DateTime createdOn, updatedOn;
-            public Nullable<DateTime> completedOn;
         }
 
-        // Constructor
+        #region Constructor
         public Tickets()
         {
             connectionString = ConfigurationManager.ConnectionStrings["DbTicketManagerConnectionString"].ConnectionString;
@@ -42,8 +41,8 @@ namespace TicketManager
             sqlDA = new SqlDataAdapter();
             dt = new DataTable();
         }
+        #endregion
 
-        // Access records based on Ticket Status
         #region GetDataBasedStatus
         public DataTable GetDataBasedStatus(string status)
         {
@@ -154,7 +153,6 @@ namespace TicketManager
         }
         #endregion
 
-
         #region CloseSqlConection
         public void CloseSqlConection()
         {
@@ -165,6 +163,8 @@ namespace TicketManager
             }
         }
         #endregion
+
+        #region GetStatusCount
         public Dictionary<string, int> GetStatusCount()
         {
             Dictionary<string, int> statusCount = new Dictionary<string, int>();
@@ -197,5 +197,6 @@ namespace TicketManager
 
             return statusCount;
         }
+        #endregion
     }
 }
