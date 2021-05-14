@@ -34,7 +34,7 @@ namespace TicketManager
             this.lblAssigned = new System.Windows.Forms.Label();
             this.lblInProgress = new System.Windows.Forms.Label();
             this.lblCompleted = new System.Windows.Forms.Label();
-            this.lblStart = new System.Windows.Forms.Label();
+            this.lblNeedToStart = new System.Windows.Forms.Label();
             this.lblAnalysis = new System.Windows.Forms.Label();
             this.lblWaiting = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -100,7 +100,7 @@ namespace TicketManager
             this.groupBox1.Controls.Add(this.lblAssigned);
             this.groupBox1.Controls.Add(this.lblInProgress);
             this.groupBox1.Controls.Add(this.lblCompleted);
-            this.groupBox1.Controls.Add(this.lblStart);
+            this.groupBox1.Controls.Add(this.lblNeedToStart);
             this.groupBox1.Controls.Add(this.lblAnalysis);
             this.groupBox1.Controls.Add(this.lblWaiting);
             this.groupBox1.Controls.Add(this.label7);
@@ -125,9 +125,9 @@ namespace TicketManager
             this.lblAssigned.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAssigned.Location = new System.Drawing.Point(633, 28);
             this.lblAssigned.Name = "lblAssigned";
-            this.lblAssigned.Size = new System.Drawing.Size(42, 28);
+            this.lblAssigned.Size = new System.Drawing.Size(29, 35);
             this.lblAssigned.TabIndex = 5;
-            this.lblAssigned.Text = "100";
+            this.lblAssigned.Text = "0";
             // 
             // lblInProgress
             // 
@@ -136,9 +136,9 @@ namespace TicketManager
             this.lblInProgress.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInProgress.Location = new System.Drawing.Point(880, 28);
             this.lblInProgress.Name = "lblInProgress";
-            this.lblInProgress.Size = new System.Drawing.Size(42, 28);
+            this.lblInProgress.Size = new System.Drawing.Size(29, 35);
             this.lblInProgress.TabIndex = 6;
-            this.lblInProgress.Text = "100";
+            this.lblInProgress.Text = "0";
             // 
             // lblCompleted
             // 
@@ -147,20 +147,20 @@ namespace TicketManager
             this.lblCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompleted.Location = new System.Drawing.Point(408, 28);
             this.lblCompleted.Name = "lblCompleted";
-            this.lblCompleted.Size = new System.Drawing.Size(42, 28);
+            this.lblCompleted.Size = new System.Drawing.Size(29, 35);
             this.lblCompleted.TabIndex = 4;
-            this.lblCompleted.Text = "100";
+            this.lblCompleted.Text = "0";
             // 
-            // lblStart
+            // lblNeedToStart
             // 
-            this.lblStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblStart.AutoSize = true;
-            this.lblStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStart.Location = new System.Drawing.Point(1149, 28);
-            this.lblStart.Name = "lblStart";
-            this.lblStart.Size = new System.Drawing.Size(42, 28);
-            this.lblStart.TabIndex = 7;
-            this.lblStart.Text = "100";
+            this.lblNeedToStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblNeedToStart.AutoSize = true;
+            this.lblNeedToStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNeedToStart.Location = new System.Drawing.Point(1149, 28);
+            this.lblNeedToStart.Name = "lblNeedToStart";
+            this.lblNeedToStart.Size = new System.Drawing.Size(29, 35);
+            this.lblNeedToStart.TabIndex = 7;
+            this.lblNeedToStart.Text = "0";
             // 
             // lblAnalysis
             // 
@@ -169,9 +169,9 @@ namespace TicketManager
             this.lblAnalysis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnalysis.Location = new System.Drawing.Point(1346, 28);
             this.lblAnalysis.Name = "lblAnalysis";
-            this.lblAnalysis.Size = new System.Drawing.Size(42, 28);
+            this.lblAnalysis.Size = new System.Drawing.Size(29, 35);
             this.lblAnalysis.TabIndex = 8;
-            this.lblAnalysis.Text = "100";
+            this.lblAnalysis.Text = "0";
             // 
             // lblWaiting
             // 
@@ -180,9 +180,9 @@ namespace TicketManager
             this.lblWaiting.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWaiting.Location = new System.Drawing.Point(1535, 28);
             this.lblWaiting.Name = "lblWaiting";
-            this.lblWaiting.Size = new System.Drawing.Size(42, 28);
+            this.lblWaiting.Size = new System.Drawing.Size(29, 35);
             this.lblWaiting.TabIndex = 9;
-            this.lblWaiting.Text = "100";
+            this.lblWaiting.Text = "0";
             // 
             // label7
             // 
@@ -263,9 +263,9 @@ namespace TicketManager
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(156, 28);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(42, 28);
+            this.lblTotal.Size = new System.Drawing.Size(29, 35);
             this.lblTotal.TabIndex = 3;
-            this.lblTotal.Text = "100";
+            this.lblTotal.Text = "0";
             // 
             // label1
             // 
@@ -754,6 +754,7 @@ namespace TicketManager
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TicketManager";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -787,7 +788,7 @@ namespace TicketManager
         private System.Windows.Forms.Label lblCompleted;
         private System.Windows.Forms.Label lblAssigned;
         private System.Windows.Forms.Label lblInProgress;
-        private System.Windows.Forms.Label lblStart;
+        private System.Windows.Forms.Label lblNeedToStart;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbStatusFilter;

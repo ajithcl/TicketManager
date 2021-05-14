@@ -165,5 +165,37 @@ namespace TicketManager
             }
         }
         #endregion
+        public Dictionary<string, int> GetStatusCount()
+        {
+            Dictionary<string, int> statusCount = new Dictionary<string, int>();
+
+            // SQL Command : select count(case Status when 'Completed' then 1 else null end) from Tickets;
+
+            try
+            {
+                foreach (string status in ticketStatusList)
+                {
+                    sqlCommand.Parameters.Clear();
+                    sqlCommand.CommandText = "select count(case Status when @status then 1 else null end) from Tickets";
+                    sqlCommand.Parameters.AddWithValue("@status", status);
+
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlDA.SelectCommand = sqlCommand;
+
+                    sqlConnection.Open();
+                    int count = (int)sqlDA.SelectCommand.ExecuteScalar();
+                    sqlConnection.Close();
+
+                    statusCount.Add(status, count);
+                }
+            }
+            catch (Exception ex)
+            {
+                LastError = $"Unable to retrieve status counts. {ex.Message}";
+                return null;
+            }
+
+            return statusCount;
+        }
     }
 }
