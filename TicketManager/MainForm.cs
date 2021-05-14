@@ -198,5 +198,28 @@ namespace TicketManager
             rtbComments.Text = data.comments;
         }
         #endregion
+
+        private void dgvTickets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            DataRowView rowView = (DataRowView)dgvTickets.Rows[e.RowIndex].DataBoundItem;
+            if (rowView == null)
+                return;
+
+            Tickets.TicketData ticketData = new Tickets.TicketData
+            {
+                ticketNumber = rowView.Row["TicketNumber"].ToString(),
+                description = rowView.Row["Description"].ToString(),
+                status = rowView.Row["Status"].ToString(),
+                comments = rowView.Row["Comments"].ToString()
+            };
+
+            ViewFieldData(ticketData);
+
+            recordAction = RecordAction.update.ToString();
+            EnableEditFields(true);
+
+        }
     }
 }
