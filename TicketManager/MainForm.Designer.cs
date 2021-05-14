@@ -402,9 +402,9 @@ namespace TicketManager
             // 
             this.btnSearchKeyWord.BackColor = System.Drawing.Color.White;
             this.btnSearchKeyWord.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchKeyWord.Image")));
-            this.btnSearchKeyWord.Location = new System.Drawing.Point(1265, 21);
+            this.btnSearchKeyWord.Location = new System.Drawing.Point(1261, 25);
             this.btnSearchKeyWord.Name = "btnSearchKeyWord";
-            this.btnSearchKeyWord.Size = new System.Drawing.Size(58, 59);
+            this.btnSearchKeyWord.Size = new System.Drawing.Size(42, 32);
             this.btnSearchKeyWord.TabIndex = 15;
             this.btnSearchKeyWord.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearchKeyWord.UseVisualStyleBackColor = false;
@@ -413,9 +413,9 @@ namespace TicketManager
             // 
             this.btnDateFilter.BackColor = System.Drawing.Color.White;
             this.btnDateFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnDateFilter.Image")));
-            this.btnDateFilter.Location = new System.Drawing.Point(867, 21);
+            this.btnDateFilter.Location = new System.Drawing.Point(843, 25);
             this.btnDateFilter.Name = "btnDateFilter";
-            this.btnDateFilter.Size = new System.Drawing.Size(58, 59);
+            this.btnDateFilter.Size = new System.Drawing.Size(41, 31);
             this.btnDateFilter.TabIndex = 11;
             this.btnDateFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDateFilter.UseVisualStyleBackColor = false;
@@ -426,7 +426,7 @@ namespace TicketManager
             this.dtpCompltdTo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dtpCompltdTo.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCompltdTo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCompltdTo.Location = new System.Drawing.Point(681, 25);
+            this.dtpCompltdTo.Location = new System.Drawing.Point(652, 25);
             this.dtpCompltdTo.Name = "dtpCompltdTo";
             this.dtpCompltdTo.Size = new System.Drawing.Size(180, 31);
             this.dtpCompltdTo.TabIndex = 13;
@@ -445,7 +445,7 @@ namespace TicketManager
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(642, 25);
+            this.label10.Location = new System.Drawing.Point(617, 25);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 25);
             this.label10.TabIndex = 10;
@@ -456,7 +456,7 @@ namespace TicketManager
             this.dtpCompltdFrom.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dtpCompltdFrom.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCompltdFrom.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCompltdFrom.Location = new System.Drawing.Point(454, 25);
+            this.dtpCompltdFrom.Location = new System.Drawing.Point(431, 25);
             this.dtpCompltdFrom.Name = "dtpCompltdFrom";
             this.dtpCompltdFrom.Size = new System.Drawing.Size(180, 31);
             this.dtpCompltdFrom.TabIndex = 12;

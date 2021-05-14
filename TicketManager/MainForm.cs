@@ -50,6 +50,7 @@ namespace TicketManager
         {
             string status = cmbStatusFilter.SelectedItem.ToString();
             dgvTickets.DataSource = tickets.GetDataBasedStatus(status);
+            DisplayStatus("Status filter applied.", StatusTypes.general);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -92,16 +93,18 @@ namespace TicketManager
             if (result)
             {
                 //SUCCESS
-                DisplayStatus(StatusTypes.success.ToString());
+                DisplayStatus(Tickets.LastError,StatusTypes.success);
                 clearAllFields();
                 EnableEditFields(false);
+
+                DisplayStatus(Tickets.LastError, StatusTypes.success);
 
                 // Refresh grid view
                 string status = cmbStatusFilter.Text;
                 dgvTickets.DataSource = tickets.GetDataBasedStatus(status);
             }
             else
-                DisplayStatus(StatusTypes.error.ToString());
+                DisplayStatus(Tickets.LastError,StatusTypes.error);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,6 +121,7 @@ namespace TicketManager
             txtDescription.Text = "";
             rtbComments.Text = "";
             cmbEditStatus.SelectedIndex = -1;
+            lblStripStatus.Text = "";
         }
         #endregion
 
@@ -143,23 +147,23 @@ namespace TicketManager
         #endregion
 
         #region DisplayStatus
-        private void DisplayStatus( string type)
+        private void DisplayStatus( string message,StatusTypes type)
         {
-            lblStripStatus.Text = Tickets.LastError;
+            lblStripStatus.Text = message;
 
-            if (type == StatusTypes.error.ToString())
+            if (type == StatusTypes.error)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.Red;
             }
-            else if (type == StatusTypes.success.ToString())
+            else if (type == StatusTypes.success)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.LightGreen;
             }
-            else if (type == StatusTypes.general.ToString())
+            else if (type == StatusTypes.general)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.LightGray;
             }
-            else if (type == StatusTypes.warning.ToString())
+            else if (type == StatusTypes.warning)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.LightYellow;
             } 
@@ -219,6 +223,7 @@ namespace TicketManager
 
             recordAction = RecordAction.update.ToString();
             EnableEditFields(true);
+            DisplayStatus("Ready for update", StatusTypes.general);
 
         }
     }
