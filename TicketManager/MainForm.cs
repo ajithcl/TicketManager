@@ -13,6 +13,7 @@ namespace TicketManager
     public partial class MainForm : Form
     {
         private readonly Tickets tickets;
+        private Dictionary<string, int> statusCount = new Dictionary<string, int>();
 
         // Standard constant record actions
         private enum RecordAction
@@ -102,6 +103,9 @@ namespace TicketManager
                 // Refresh grid view
                 string status = cmbStatusFilter.Text;
                 dgvTickets.DataSource = tickets.GetDataBasedStatus(status);
+
+                // Status counts refresh
+                RefreshStatusCounts();
             }
             else
                 DisplayStatus(Tickets.LastError,StatusTypes.error);
@@ -226,5 +230,28 @@ namespace TicketManager
             DisplayStatus("Ready for update", StatusTypes.general);
 
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            RefreshStatusCounts();
+        }
+
+        #region RefreshStatusCounts
+        private void RefreshStatusCounts()
+        {
+            statusCount = tickets.GetStatusCount();
+            if (statusCount != null)
+            {
+                lblAnalysis.Text = statusCount["Analysis"].ToString();
+                lblAssigned.Text = statusCount["Assigned"].ToString();
+                lblCompleted.Text = statusCount["Completed"].ToString();
+                lblInProgress.Text = statusCount["In Progress"].ToString();
+                lblNeedToStart.Text = statusCount["NeedToStart"].ToString();
+                lblWaiting.Text = statusCount["Waiting"].ToString();
+            }
+            else
+                DisplayStatus(Tickets.LastError, StatusTypes.error);
+        }
+        #endregion
     }
 }
