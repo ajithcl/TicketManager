@@ -29,9 +29,10 @@ namespace TicketManager
         {
             public string ticketNumber, description, status, comments;
             public DateTime createdOn, updatedOn;
+            public Nullable<DateTime> completedOn;
         }
 
-        #region Constructor
+        // Constructor
         public Tickets()
         {
             connectionString = ConfigurationManager.ConnectionStrings["DbTicketManagerConnectionString"].ConnectionString;
@@ -41,7 +42,7 @@ namespace TicketManager
             sqlDA = new SqlDataAdapter();
             dt = new DataTable();
         }
-        #endregion
+
         // Access records based on Ticket Status
         #region GetDataBasedStatus
         public DataTable GetDataBasedStatus(string status)
@@ -153,48 +154,16 @@ namespace TicketManager
         }
         #endregion
 
+
         #region CloseSqlConection
         public void CloseSqlConection()
         {
-            // Explicitly closing SQL connection
+            // Explicitly closing connection
             if (sqlConnection != null && sqlConnection.State == ConnectionState.Open)
             {
                 sqlConnection.Close();
             }
         }
         #endregion
-
-        public Dictionary<string,int> GetStatusCount()
-        {
-            Dictionary<string, int> statusCount = new Dictionary<string, int>();
-
-            // SQL Command : select count(case Status when 'Completed' then 1 else null end) from Tickets;
-            
-            try
-            {
-                foreach (string status in ticketStatusList)
-                {
-                    sqlCommand.Parameters.Clear();
-                    sqlCommand.CommandText = "select count(case Status when @status then 1 else null end) from Tickets";
-                    sqlCommand.Parameters.AddWithValue("@status", status);
-
-                    sqlCommand.CommandType = CommandType.Text;
-                    sqlDA.SelectCommand = sqlCommand;
-
-                    sqlConnection.Open();
-                    int count = (int)sqlDA.SelectCommand.ExecuteScalar();
-                    sqlConnection.Close();
-
-                    statusCount.Add(status, count);
-                }
-            }
-            catch (Exception ex)
-            {
-                LastError = $"Unable to retrieve status counts. {ex.Message}";
-                return null;
-            }
-
-            return statusCount;
-        }
     }
 }
