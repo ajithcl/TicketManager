@@ -125,7 +125,7 @@ namespace TicketManager
             this.lblAssigned.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAssigned.Location = new System.Drawing.Point(633, 28);
             this.lblAssigned.Name = "lblAssigned";
-            this.lblAssigned.Size = new System.Drawing.Size(29, 35);
+            this.lblAssigned.Size = new System.Drawing.Size(23, 28);
             this.lblAssigned.TabIndex = 5;
             this.lblAssigned.Text = "0";
             // 
@@ -136,7 +136,7 @@ namespace TicketManager
             this.lblInProgress.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInProgress.Location = new System.Drawing.Point(880, 28);
             this.lblInProgress.Name = "lblInProgress";
-            this.lblInProgress.Size = new System.Drawing.Size(29, 35);
+            this.lblInProgress.Size = new System.Drawing.Size(23, 28);
             this.lblInProgress.TabIndex = 6;
             this.lblInProgress.Text = "0";
             // 
@@ -147,7 +147,7 @@ namespace TicketManager
             this.lblCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompleted.Location = new System.Drawing.Point(408, 28);
             this.lblCompleted.Name = "lblCompleted";
-            this.lblCompleted.Size = new System.Drawing.Size(29, 35);
+            this.lblCompleted.Size = new System.Drawing.Size(23, 28);
             this.lblCompleted.TabIndex = 4;
             this.lblCompleted.Text = "0";
             // 
@@ -158,7 +158,7 @@ namespace TicketManager
             this.lblNeedToStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNeedToStart.Location = new System.Drawing.Point(1149, 28);
             this.lblNeedToStart.Name = "lblNeedToStart";
-            this.lblNeedToStart.Size = new System.Drawing.Size(29, 35);
+            this.lblNeedToStart.Size = new System.Drawing.Size(23, 28);
             this.lblNeedToStart.TabIndex = 7;
             this.lblNeedToStart.Text = "0";
             // 
@@ -169,7 +169,7 @@ namespace TicketManager
             this.lblAnalysis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnalysis.Location = new System.Drawing.Point(1346, 28);
             this.lblAnalysis.Name = "lblAnalysis";
-            this.lblAnalysis.Size = new System.Drawing.Size(29, 35);
+            this.lblAnalysis.Size = new System.Drawing.Size(23, 28);
             this.lblAnalysis.TabIndex = 8;
             this.lblAnalysis.Text = "0";
             // 
@@ -180,7 +180,7 @@ namespace TicketManager
             this.lblWaiting.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWaiting.Location = new System.Drawing.Point(1535, 28);
             this.lblWaiting.Name = "lblWaiting";
-            this.lblWaiting.Size = new System.Drawing.Size(29, 35);
+            this.lblWaiting.Size = new System.Drawing.Size(23, 28);
             this.lblWaiting.TabIndex = 9;
             this.lblWaiting.Text = "0";
             // 
@@ -263,7 +263,7 @@ namespace TicketManager
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(156, 28);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(29, 35);
+            this.lblTotal.Size = new System.Drawing.Size(23, 28);
             this.lblTotal.TabIndex = 3;
             this.lblTotal.Text = "0";
             // 
@@ -288,7 +288,7 @@ namespace TicketManager
             this.settingsToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1682, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1682, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -299,7 +299,7 @@ namespace TicketManager
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
-            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
             this.ticketsToolStripMenuItem.Text = "Tickets";
             // 
             // newToolStripMenuItem
@@ -327,7 +327,7 @@ namespace TicketManager
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toExcelToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // toExcelToolStripMenuItem
@@ -339,7 +339,7 @@ namespace TicketManager
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(76, 24);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(76, 26);
             this.settingsToolStripMenuItem1.Text = "Settings";
             // 
             // groupBox2
@@ -612,6 +612,7 @@ namespace TicketManager
             this.btnDirectory.Size = new System.Drawing.Size(62, 55);
             this.btnDirectory.TabIndex = 22;
             this.btnDirectory.UseVisualStyleBackColor = false;
+            this.btnDirectory.Click += new System.EventHandler(this.btnDirectory_Click);
             // 
             // rtbComments
             // 
