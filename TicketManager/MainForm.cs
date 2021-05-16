@@ -13,6 +13,7 @@ namespace TicketManager
     public partial class MainForm : Form
     {
         private readonly Tickets tickets;
+        private Dictionary<string, int> statusCount = new Dictionary<string, int>();
 
         // Standard constant record actions
         private enum RecordAction
@@ -50,16 +51,19 @@ namespace TicketManager
         {
             string status = cmbStatusFilter.SelectedItem.ToString();
             dgvTickets.DataSource = tickets.GetDataBasedStatus(status);
+            DisplayStatus("Status filter applied.", StatusTypes.general);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             clearAllFields();
             EnableEditFields(false);
+            tickets.CloseSqlConection();
         }
 
         private void btnDateFilter_Click(object sender, EventArgs e)
         {
+            DisplayStatus("Completion date filter applied.", StatusTypes.general);
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,44 +74,42 @@ namespace TicketManager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            bool result = false;
+            Tickets.TicketData ticketData = new Tickets.TicketData
+            {
+                ticketNumber = txtTicketNo.Text,
+                status = cmbEditStatus.Text,
+                description = txtDescription.Text,
+                comments = rtbComments.Text
+            };
             if (recordAction == RecordAction.insert.ToString())
             {
                 // INSERT
-                Tickets.TicketData ticketData = new Tickets.TicketData
-                {
-                    ticketNumber = txtTicketNo.Text,
-                    status = cmbEditStatus.SelectedItem.ToString(),
-                    description = txtDescription.Text,
-                    comments = rtbComments.Text,
-                    createdOn = DateTime.Now.Date,
-                    updatedOn = DateTime.Now.Date
-                };
-
-                bool result = tickets.Insert(ticketData);
-                if (result)
-                {
-                    //SUCCESS
-                    DisplayStatus(StatusTypes.success.ToString());
-                    clearAllFields();
-                    EnableEditFields(false);
-                }
-                else
-                    DisplayStatus(StatusTypes.error.ToString());
+                result = tickets.Insert(ticketData);
             }
             else if (recordAction == RecordAction.update.ToString())
             {
-                //UPDATE
-                Tickets.TicketData ticketData = new Tickets.TicketData
-                {
-                    ticketNumber = txtTicketNo.Text,
-                    description = txtDescription.Text,
-                    comments = rtbComments.Text,
-                    createdOn = DateTime.Now.Date,
-                    updatedOn = DateTime.Now.Date
-                };
-
-                //TODO : Call update method
+                // UPDATE
+                 result = tickets.Update(ticketData);
             }
+            if (result)
+            {
+                //SUCCESS
+                DisplayStatus(Tickets.LastError,StatusTypes.success);
+                clearAllFields();
+                EnableEditFields(false);
+
+                DisplayStatus(Tickets.LastError, StatusTypes.success);
+
+                // Refresh grid view
+                string status = cmbStatusFilter.Text;
+                dgvTickets.DataSource = tickets.GetDataBasedStatus(status);
+
+                // Status count refresh
+                RefreshStatusCounts();
+            }
+            else
+                DisplayStatus(Tickets.LastError,StatusTypes.error);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,6 +118,7 @@ namespace TicketManager
             EnableEditFields(true);
         }
 
+        #region clearAllFields
         private void clearAllFields()
         {
             //TODO : Code for clearing fields.
@@ -123,10 +126,19 @@ namespace TicketManager
             txtDescription.Text = "";
             rtbComments.Text = "";
             cmbEditStatus.SelectedIndex = -1;
+            lblStripStatus.Text = "";
         }
+        #endregion
+
+        #region EnableEditFields
         private void EnableEditFields(bool enable)
         {
-            txtTicketNo.Enabled = enable;
+            if (enable && recordAction == RecordAction.insert.ToString())
+            {
+                txtTicketNo.Enabled = enable;
+            }
+            else
+                txtTicketNo.Enabled = false;
             txtDescription.Enabled = enable;
             cmbEditStatus.Enabled = enable;
             rtbComments.Enabled = enable;
@@ -137,28 +149,31 @@ namespace TicketManager
             btnMail.Enabled = enable;
             btnTimeStamp.Enabled = enable;
         }
+        #endregion
 
-        private void DisplayStatus( string type)
+        #region DisplayStatus
+        private void DisplayStatus( string message,StatusTypes type)
         {
-            lblStripStatus.Text = Tickets.LastError;
+            lblStripStatus.Text = message;
 
-            if (type == StatusTypes.error.ToString())
+            if (type == StatusTypes.error)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.Red;
             }
-            else if (type == StatusTypes.success.ToString())
+            else if (type == StatusTypes.success)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.LightGreen;
             }
-            else if (type == StatusTypes.general.ToString())
+            else if (type == StatusTypes.general)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.LightGray;
             }
-            else if (type == StatusTypes.warning.ToString())
+            else if (type == StatusTypes.warning)
             {
                 lblStripStatus.BackColor = System.Drawing.Color.LightYellow;
             } 
         }
+        #endregion
 
         private void dgvTickets_SelectionChanged(object sender, EventArgs e)
         {
@@ -176,18 +191,73 @@ namespace TicketManager
                 ticketNumber = rowView.Row["TicketNumber"].ToString(),
                 description = rowView.Row["Description"].ToString(),
                 status = rowView.Row["Status"].ToString(),
+                comments = rowView.Row["Comments"].ToString()
             };
 
             ViewFieldData(ticketData);
 
         }
 
+        #region ViewFieldData
         private void ViewFieldData(Tickets.TicketData data)
         {
             txtTicketNo.Text = data.ticketNumber;
             txtDescription.Text = data.description;
             cmbEditStatus.Text = data.status;
+            rtbComments.Text = data.comments;
+        }
+        #endregion
 
+        private void dgvTickets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            DataRowView rowView = (DataRowView)dgvTickets.Rows[e.RowIndex].DataBoundItem;
+            if (rowView == null)
+                return;
+
+            Tickets.TicketData ticketData = new Tickets.TicketData
+            {
+                ticketNumber = rowView.Row["TicketNumber"].ToString(),
+                description = rowView.Row["Description"].ToString(),
+                status = rowView.Row["Status"].ToString(),
+                comments = rowView.Row["Comments"].ToString()
+            };
+
+            ViewFieldData(ticketData);
+
+            recordAction = RecordAction.update.ToString();
+            EnableEditFields(true);
+            DisplayStatus("Ready for update", StatusTypes.general);
+
+        }
+
+        #region RefreshStatusCounts
+        private void RefreshStatusCounts()
+        {
+            statusCount = tickets.GetStatusCount();
+            if (statusCount != null)
+            {
+                lblAnalysis.Text = statusCount["Analysis"].ToString();
+                lblAssigned.Text = statusCount["Assigned"].ToString();
+                lblCompleted.Text = statusCount["Completed"].ToString();
+                lblInProgress.Text = statusCount["In Progress"].ToString();
+                lblNeedToStart.Text = statusCount["NeedToStart"].ToString();
+                lblWaiting.Text = statusCount["Waiting"].ToString();
+            }
+            else
+                DisplayStatus(Tickets.LastError, StatusTypes.error);
+        }
+        #endregion
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            RefreshStatusCounts();
+        }
+
+        private void btnSearchKeyWord_Click(object sender, EventArgs e)
+        {
+            DisplayStatus("Keyword search filter applied.", StatusTypes.general);
         }
     }
 }

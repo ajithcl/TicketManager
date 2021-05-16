@@ -28,10 +28,10 @@ namespace TicketManager
         public struct TicketData
         {
             public string ticketNumber, description, status, comments;
-            public DateTime createdOn, updatedOn, completedOn;
+            public DateTime createdOn, updatedOn;
         }
 
-        // Constructor
+        #region Constructor
         public Tickets()
         {
             connectionString = ConfigurationManager.ConnectionStrings["DbTicketManagerConnectionString"].ConnectionString;
@@ -41,8 +41,9 @@ namespace TicketManager
             sqlDA = new SqlDataAdapter();
             dt = new DataTable();
         }
+        #endregion
 
-        // Access records based on Ticket Status
+        #region GetDataBasedStatus
         public DataTable GetDataBasedStatus(string status)
         {
             sqlCommand.Parameters.Clear();
@@ -68,10 +69,13 @@ namespace TicketManager
 
             return dt;
         }
+        #endregion
 
-        // Insert data
+        #region  Insert
         public bool Insert(TicketData ticket)
         {
+            ticket.updatedOn = DateTime.Now.Date;
+            ticket.createdOn = DateTime.Now.Date;
             try
             {
                 sqlCommand.Parameters.Clear();
@@ -92,7 +96,7 @@ namespace TicketManager
                 sqlDA.InsertCommand.ExecuteNonQuery();
                 sqlConnection.Close();
 
-                LastError = "Record Inserted";
+                LastError = "Ticket Record created.";
                 return true;
             }
             catch (Exception ex)
@@ -101,6 +105,98 @@ namespace TicketManager
                 return false;
             }
         }
+        #endregion
 
+        #region update
+        public bool Update(TicketData ticket)
+        {
+            ticket.updatedOn = DateTime.Now.Date;
+
+            try
+            {
+                sqlCommand.Parameters.Clear();
+                sqlCommand.CommandText = "UPDATE Tickets SET Description = @description, " +
+                                                            "Status = @status, " +
+                                                            "Comments = @comments, " +
+                                                            "UpdatedOn = @updatedon, " + 
+                                                            "CompletedOn = @completedon " + 
+                                                            "WHERE TicketNumber = @ticketnumber";
+
+                sqlCommand.Parameters.AddWithValue("@ticketnumber", ticket.ticketNumber);
+                sqlCommand.Parameters.AddWithValue("@description", ticket.description);
+                sqlCommand.Parameters.AddWithValue("@status", ticket.status);
+                sqlCommand.Parameters.AddWithValue("@comments", ticket.comments);
+                sqlCommand.Parameters.AddWithValue("@updatedon", ticket.updatedOn);
+
+                if (ticket.status.Trim() == "Completed")
+                    sqlCommand.Parameters.AddWithValue("@completedon", DateTime.Now.Date);
+                else
+                    sqlCommand.Parameters.AddWithValue("@completedon", DBNull.Value);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlDA.UpdateCommand = sqlCommand;
+
+                sqlConnection.Open();
+                sqlDA.UpdateCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                LastError = "Ticket updated.";
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LastError = $"Update Error. {ex.Message}";
+                return false;
+            }
+            
+        }
+        #endregion
+
+        #region CloseSqlConection
+        public void CloseSqlConection()
+        {
+            // Explicitly closing connection
+            if (sqlConnection != null && sqlConnection.State == ConnectionState.Open)
+            {
+                sqlConnection.Close();
+            }
+        }
+        #endregion
+
+        #region GetStatusCount
+        public Dictionary<string, int> GetStatusCount()
+        {
+            Dictionary<string, int> statusCount = new Dictionary<string, int>();
+
+            // SQL Command : select count(case Status when 'Completed' then 1 else null end) from Tickets;
+
+            try
+            {
+                foreach (string status in ticketStatusList)
+                {
+                    sqlCommand.Parameters.Clear();
+                    sqlCommand.CommandText = "select count(case Status when @status then 1 else null end) from Tickets";
+                    sqlCommand.Parameters.AddWithValue("@status", status);
+
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlDA.SelectCommand = sqlCommand;
+
+                    sqlConnection.Open();
+                    int count = (int)sqlDA.SelectCommand.ExecuteScalar();
+                    sqlConnection.Close();
+
+                    statusCount.Add(status, count);
+                }
+            }
+            catch (Exception ex)
+            {
+                LastError = $"Unable to retrieve status counts. {ex.Message}";
+                return null;
+            }
+
+            return statusCount;
+        }
+        #endregion
     }
 }
