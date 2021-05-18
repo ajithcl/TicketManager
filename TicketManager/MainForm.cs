@@ -118,22 +118,25 @@ namespace TicketManager
                 // Status count refresh
                 RefreshStatusCounts();
 
-                // Create ticket folder
-                string ticketDirPath = projectDirectory + "\\" +ticketData.ticketNumber;
-                try
-                {
-                    if (Directory.Exists(ticketDirPath))
+                if (recordAction == RecordAction.insert.ToString())
+                {                
+                    // Create ticket folder while creating ticket
+                    string ticketDirPath = projectDirectory + "\\" +ticketData.ticketNumber;
+                    try
                     {
-                        DisplayStatus($"Directory : {ticketDirPath.Trim()} already exists!", StatusTypes.warning);
+                        if (Directory.Exists(ticketDirPath))
+                        {
+                            DisplayStatus($"Directory : {ticketDirPath.Trim()} already exists!", StatusTypes.warning);
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(ticketDirPath);
+                        }
                     }
-                    else
+                    catch(Exception ex)
                     {
-                        Directory.CreateDirectory(ticketDirPath);
+                        DisplayStatus($"Error while creating directory {ticketDirPath}. {ex.Message}", StatusTypes.error);
                     }
-                }
-                catch(Exception ex)
-                {
-                    DisplayStatus($"Error while creating directory {ticketDirPath}. {ex.Message}", StatusTypes.error);
                 }
             }
             else
