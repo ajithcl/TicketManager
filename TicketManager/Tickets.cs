@@ -183,11 +183,20 @@ namespace TicketManager
                     sqlDA.SelectCommand = sqlCommand;
 
                     sqlConnection.Open();
-                    int count = (int)sqlDA.SelectCommand.ExecuteScalar();
+                    statusCount.Add(status, (int)sqlDA.SelectCommand.ExecuteScalar());
                     sqlConnection.Close();
 
-                    statusCount.Add(status, count);
+                    
                 }
+                sqlCommand.Parameters.Clear();
+                sqlCommand.CommandText = "select count (*) from Tickets";
+                sqlCommand.CommandType = CommandType.Text;
+                sqlDA.SelectCommand = sqlCommand;
+
+                sqlConnection.Open();
+                statusCount.Add("Total", (int)sqlDA.SelectCommand.ExecuteScalar());
+                sqlConnection.Close();
+                
             }
             catch (Exception ex)
             {

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +17,7 @@ namespace TicketManager
     {
         private readonly Tickets tickets;
         private Dictionary<string, int> statusCount = new Dictionary<string, int>();
+        private string projectDirectory;
 
         // Standard constant record actions
         private enum RecordAction
@@ -45,6 +49,12 @@ namespace TicketManager
             cmbStatusFilter.Items.AddRange(Tickets.ticketStatusList);
 
             cmbEditStatus.Items.AddRange(Tickets.ticketStatusList);
+
+            //TODO
+            projectDirectory = ConfigurationManager.AppSettings.Get("ProjectDirectory");
+
+            if (projectDirectory.Length == 0 )
+                DisplayStatus("project directory not configured!", StatusTypes.error);
         }
 
         private void cmbStatusFilter_SelectedValueChanged(object sender, EventArgs e)
@@ -107,6 +117,24 @@ namespace TicketManager
 
                 // Status count refresh
                 RefreshStatusCounts();
+
+                // Create ticket folder
+                string ticketDirPath = projectDirectory + "\\" +ticketData.ticketNumber;
+                try
+                {
+                    if (Directory.Exists(ticketDirPath))
+                    {
+                        DisplayStatus($"Directory : {ticketDirPath.Trim()} already exists!", StatusTypes.warning);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(ticketDirPath);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    DisplayStatus($"Error while creating directory {ticketDirPath}. {ex.Message}", StatusTypes.error);
+                }
             }
             else
                 DisplayStatus(Tickets.LastError,StatusTypes.error);
@@ -205,6 +233,10 @@ namespace TicketManager
             txtDescription.Text = data.description;
             cmbEditStatus.Text = data.status;
             rtbComments.Text = data.comments;
+
+            btnDirectory.Enabled = true;
+            btnMail.Enabled = true;
+            btnShowObjects.Enabled = true;
         }
         #endregion
 
@@ -244,6 +276,7 @@ namespace TicketManager
                 lblInProgress.Text = statusCount["In Progress"].ToString();
                 lblNeedToStart.Text = statusCount["NeedToStart"].ToString();
                 lblWaiting.Text = statusCount["Waiting"].ToString();
+                lblTotal.Text = statusCount["Total"].ToString();
             }
             else
                 DisplayStatus(Tickets.LastError, StatusTypes.error);
@@ -258,6 +291,27 @@ namespace TicketManager
         private void btnSearchKeyWord_Click(object sender, EventArgs e)
         {
             DisplayStatus("Keyword search filter applied.", StatusTypes.general);
+        }
+
+        private void btnDirectory_Click(object sender, EventArgs e)
+        {
+            if (projectDirectory.Length == 0)
+                return;
+            string ticketNumber = txtTicketNo.Text;
+            string ticketDirectory = projectDirectory + "\\" + ticketNumber;
+            if (Directory.Exists(ticketDirectory))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    Arguments = ticketDirectory,
+                    FileName = "explorer.exe"
+                };
+            Process.Start(startInfo);
+            }
+            else
+            {
+                DisplayStatus($"Directory : {ticketDirectory.Trim()} does not exist.", StatusTypes.error);
+            }
         }
     }
 }
