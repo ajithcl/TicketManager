@@ -276,6 +276,7 @@ namespace TicketManager
                 lblInProgress.Text = statusCount["In Progress"].ToString();
                 lblNeedToStart.Text = statusCount["NeedToStart"].ToString();
                 lblWaiting.Text = statusCount["Waiting"].ToString();
+                lblTotal.Text = statusCount["Total"].ToString();
             }
             else
                 DisplayStatus(Tickets.LastError, StatusTypes.error);
