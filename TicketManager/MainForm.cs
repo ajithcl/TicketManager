@@ -172,7 +172,8 @@ namespace TicketManager
                 txtTicketNo.Enabled = false;
             txtDescription.Enabled = enable;
             cmbEditStatus.Enabled = enable;
-            rtbComments.Enabled = enable;
+            // rtbComments.Enabled = enable;
+            rtbComments.ReadOnly = !enable;
             btnCancel.Enabled = enable;
             btnSave.Enabled = enable;
             btnDirectory.Enabled = enable;
