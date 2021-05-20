@@ -170,16 +170,26 @@ namespace TicketManager
             }
             else
                 txtTicketNo.Enabled = false;
-            txtDescription.Enabled = enable;
-            cmbEditStatus.Enabled = enable;
-            // rtbComments.Enabled = enable;
-            rtbComments.ReadOnly = !enable;
+            
+            cmbEditStatus.Enabled = enable;            
             btnCancel.Enabled = enable;
             btnSave.Enabled = enable;
             btnDirectory.Enabled = enable;
             btnShowObjects.Enabled = enable;
             btnMail.Enabled = enable;
             btnTimeStamp.Enabled = enable;
+            if (enable)
+            {
+                txtDescription.ReadOnly = false;
+                rtbComments.ReadOnly = false;
+                rtbComments.BackColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                txtDescription.ReadOnly = true;
+                rtbComments.ReadOnly = true;
+                rtbComments.BackColor = SystemColors.Control;
+            }
         }
         #endregion
 
