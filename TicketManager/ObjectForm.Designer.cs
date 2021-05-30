@@ -43,6 +43,7 @@ namespace TicketManager
             this.txtObject = new System.Windows.Forms.TextBox();
             this.cmbActivity = new System.Windows.Forms.ComboBox();
             this.rtbComments = new System.Windows.Forms.RichTextBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabUpdate.SuspendLayout();
@@ -115,19 +116,18 @@ namespace TicketManager
             // 
             this.dgvObjects.AllowUserToDeleteRows = false;
             this.dgvObjects.AllowUserToOrderColumns = true;
-            this.dgvObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvObjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvObjects.Location = new System.Drawing.Point(6, 6);
+            this.dgvObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvObjects.Location = new System.Drawing.Point(3, 3);
             this.dgvObjects.Name = "dgvObjects";
             this.dgvObjects.RowHeadersWidth = 51;
             this.dgvObjects.RowTemplate.Height = 24;
-            this.dgvObjects.Size = new System.Drawing.Size(556, 211);
+            this.dgvObjects.Size = new System.Drawing.Size(564, 217);
             this.dgvObjects.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.rtbComments);
             this.panel1.Controls.Add(this.cmbActivity);
             this.panel1.Controls.Add(this.txtObject);
@@ -188,11 +188,22 @@ namespace TicketManager
             // 
             // rtbComments
             // 
+            this.rtbComments.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbComments.Location = new System.Drawing.Point(20, 85);
             this.rtbComments.Name = "rtbComments";
             this.rtbComments.Size = new System.Drawing.Size(536, 116);
             this.rtbComments.TabIndex = 5;
             this.rtbComments.Text = "";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(452, 10);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(105, 30);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "SAVE";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // ObjectForm
             // 
@@ -236,5 +247,6 @@ namespace TicketManager
         private System.Windows.Forms.TextBox txtObject;
         private System.Windows.Forms.ComboBox cmbActivity;
         private System.Windows.Forms.RichTextBox rtbComments;
+        private System.Windows.Forms.Button btnSave;
     }
 }
