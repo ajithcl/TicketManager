@@ -327,5 +327,11 @@ namespace TicketManager
                 DisplayStatus($"Directory : {ticketDirectory.Trim()} does not exist.", StatusTypes.error);
             }
         }
+
+        private void btnShowObjects_Click(object sender, EventArgs e)
+        {
+            var frmObjects = new ObjectForm();
+            frmObjects.ShowDialog();
+        }
     }
 }

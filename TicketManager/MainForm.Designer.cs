@@ -612,6 +612,7 @@ namespace TicketManager
             this.btnShowObjects.Size = new System.Drawing.Size(61, 63);
             this.btnShowObjects.TabIndex = 24;
             this.btnShowObjects.UseVisualStyleBackColor = false;
+            this.btnShowObjects.Click += new System.EventHandler(this.btnShowObjects_Click);
             // 
             // btnMail
             // 
