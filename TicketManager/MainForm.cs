@@ -42,6 +42,9 @@ namespace TicketManager
             LoadControls();
             EnableEditFields(false);
             tickets = new Tickets();
+
+            // Show tickets with status 'In Progress'
+            cmbStatusFilter.SelectedItem = "In Progress";
         }
         private void LoadControls()
         {
@@ -50,7 +53,6 @@ namespace TicketManager
 
             cmbEditStatus.Items.AddRange(Tickets.ticketStatusList);
 
-            //TODO
             projectDirectory = ConfigurationManager.AppSettings.Get("ProjectDirectory");
 
             if (projectDirectory.Length == 0 )
