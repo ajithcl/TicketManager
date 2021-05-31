@@ -119,7 +119,7 @@ namespace TicketManager
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1661, 48);
+            this.groupBox1.Size = new System.Drawing.Size(1659, 48);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Summary";
@@ -129,7 +129,7 @@ namespace TicketManager
             this.lblAssigned.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblAssigned.AutoSize = true;
             this.lblAssigned.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAssigned.Location = new System.Drawing.Point(635, 15);
+            this.lblAssigned.Location = new System.Drawing.Point(634, 15);
             this.lblAssigned.Name = "lblAssigned";
             this.lblAssigned.Size = new System.Drawing.Size(23, 28);
             this.lblAssigned.TabIndex = 5;
@@ -140,7 +140,7 @@ namespace TicketManager
             this.lblInProgress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblInProgress.AutoSize = true;
             this.lblInProgress.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInProgress.Location = new System.Drawing.Point(881, 15);
+            this.lblInProgress.Location = new System.Drawing.Point(880, 15);
             this.lblInProgress.Name = "lblInProgress";
             this.lblInProgress.Size = new System.Drawing.Size(23, 28);
             this.lblInProgress.TabIndex = 6;
@@ -151,7 +151,7 @@ namespace TicketManager
             this.lblCompleted.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCompleted.AutoSize = true;
             this.lblCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompleted.Location = new System.Drawing.Point(409, 15);
+            this.lblCompleted.Location = new System.Drawing.Point(408, 15);
             this.lblCompleted.Name = "lblCompleted";
             this.lblCompleted.Size = new System.Drawing.Size(23, 28);
             this.lblCompleted.TabIndex = 4;
@@ -162,7 +162,7 @@ namespace TicketManager
             this.lblNeedToStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblNeedToStart.AutoSize = true;
             this.lblNeedToStart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNeedToStart.Location = new System.Drawing.Point(1151, 15);
+            this.lblNeedToStart.Location = new System.Drawing.Point(1150, 15);
             this.lblNeedToStart.Name = "lblNeedToStart";
             this.lblNeedToStart.Size = new System.Drawing.Size(23, 28);
             this.lblNeedToStart.TabIndex = 7;
@@ -173,7 +173,7 @@ namespace TicketManager
             this.lblAnalysis.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblAnalysis.AutoSize = true;
             this.lblAnalysis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnalysis.Location = new System.Drawing.Point(1348, 15);
+            this.lblAnalysis.Location = new System.Drawing.Point(1347, 15);
             this.lblAnalysis.Name = "lblAnalysis";
             this.lblAnalysis.Size = new System.Drawing.Size(23, 28);
             this.lblAnalysis.TabIndex = 8;
@@ -184,7 +184,7 @@ namespace TicketManager
             this.lblWaiting.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblWaiting.AutoSize = true;
             this.lblWaiting.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWaiting.Location = new System.Drawing.Point(1536, 15);
+            this.lblWaiting.Location = new System.Drawing.Point(1535, 15);
             this.lblWaiting.Name = "lblWaiting";
             this.lblWaiting.Size = new System.Drawing.Size(23, 28);
             this.lblWaiting.TabIndex = 9;
@@ -196,7 +196,7 @@ namespace TicketManager
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(1447, 15);
+            this.label7.Location = new System.Drawing.Point(1446, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 25);
             this.label7.TabIndex = 9;
@@ -208,7 +208,7 @@ namespace TicketManager
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(1255, 15);
+            this.label6.Location = new System.Drawing.Point(1254, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 25);
             this.label6.TabIndex = 8;
@@ -220,7 +220,7 @@ namespace TicketManager
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(764, 15);
+            this.label5.Location = new System.Drawing.Point(763, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 25);
             this.label5.TabIndex = 7;
@@ -232,7 +232,7 @@ namespace TicketManager
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(291, 15);
+            this.label4.Location = new System.Drawing.Point(290, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 25);
             this.label4.TabIndex = 6;
@@ -244,7 +244,7 @@ namespace TicketManager
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(1012, 15);
+            this.label2.Location = new System.Drawing.Point(1011, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 25);
             this.label2.TabIndex = 4;
@@ -256,7 +256,7 @@ namespace TicketManager
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(533, 15);
+            this.label3.Location = new System.Drawing.Point(532, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 5;
@@ -267,7 +267,7 @@ namespace TicketManager
             this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(157, 15);
+            this.lblTotal.Location = new System.Drawing.Point(156, 15);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(23, 28);
             this.lblTotal.TabIndex = 3;
@@ -279,7 +279,7 @@ namespace TicketManager
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(84, 15);
+            this.label1.Location = new System.Drawing.Point(83, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 25);
             this.label1.TabIndex = 3;
@@ -295,7 +295,7 @@ namespace TicketManager
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1540, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1690, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -370,7 +370,7 @@ namespace TicketManager
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(1661, 90);
+            this.groupBox2.Size = new System.Drawing.Size(1659, 90);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
@@ -767,7 +767,7 @@ namespace TicketManager
             this.statusStrip1.Location = new System.Drawing.Point(0, 721);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1540, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1690, 26);
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -786,7 +786,7 @@ namespace TicketManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1540, 747);
+            this.ClientSize = new System.Drawing.Size(1690, 747);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dgvTickets);
