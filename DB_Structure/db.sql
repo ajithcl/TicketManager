@@ -78,12 +78,23 @@ GO
 
 
 /********************************************************** Object database   *************/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[Objects](
+	[ID] [int] NOT NULL,
 	[TicketNumber] [char](50) NOT NULL,
 	[ObjectName] [char](75) NOT NULL,
 	[Activity] [char](30) NULL,
 	[CreatedOn] [date] NOT NULL,
-	[Comments] [char](500) NULL
+	[Comments] [char](500) NULL,
+ CONSTRAINT [PK_Objects] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
@@ -96,42 +107,5 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'One ticket record may contain multiple object records.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Objects', @level2type=N'CONSTRAINT',@level2name=N'FK_Objects_Tickets'
 GO
-
-USE [TicketManager]
-GO
-
-/****** Object:  Index [IX_Object_CreatedOn]    Script Date: 5/10/2021 5:55:11 PM ******/
-CREATE NONCLUSTERED INDEX [IX_Object_CreatedOn] ON [dbo].[Objects]
-(
-	[CreatedOn] DESC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-GO
-
-USE [TicketManager]
-GO
-
-SET ANSI_PADDING ON
-GO
-
-/****** Object:  Index [IX_ObjectName]    Script Date: 5/10/2021 5:55:32 PM ******/
-CREATE NONCLUSTERED INDEX [IX_ObjectName] ON [dbo].[Objects]
-(
-	[ObjectName] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-GO
-
-USE [TicketManager]
-GO
-
-SET ANSI_PADDING ON
-GO
-
-/****** Object:  Index [IX_Objects]    Script Date: 5/10/2021 5:55:40 PM ******/
-CREATE NONCLUSTERED INDEX [IX_Objects] ON [dbo].[Objects]
-(
-	[TicketNumber] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-GO
-
 
 
