@@ -57,7 +57,6 @@ namespace TicketManager
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbComments = new System.Windows.Forms.RadioButton();
             this.rbTicketNo = new System.Windows.Forms.RadioButton();
-            this.label11 = new System.Windows.Forms.Label();
             this.btnSearchKeyWord = new System.Windows.Forms.Button();
             this.btnDateFilter = new System.Windows.Forms.Button();
             this.dtpCompltdTo = new System.Windows.Forms.DateTimePicker();
@@ -88,12 +87,14 @@ namespace TicketManager
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTickets)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -354,23 +355,19 @@ namespace TicketManager
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox2.Controls.Add(this.rbComments);
-            this.groupBox2.Controls.Add(this.rbTicketNo);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.btnSearchKeyWord);
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.btnDateFilter);
             this.groupBox2.Controls.Add(this.dtpCompltdTo);
-            this.groupBox2.Controls.Add(this.txtKeyWord);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.dtpCompltdFrom);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cmbStatusFilter);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(12, 101);
+            this.groupBox2.Location = new System.Drawing.Point(12, 91);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(1659, 90);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(1);
+            this.groupBox2.Size = new System.Drawing.Size(1659, 100);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
@@ -378,7 +375,7 @@ namespace TicketManager
             // rbComments
             // 
             this.rbComments.AutoSize = true;
-            this.rbComments.Location = new System.Drawing.Point(1140, 60);
+            this.rbComments.Location = new System.Drawing.Point(101, 50);
             this.rbComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbComments.Name = "rbComments";
             this.rbComments.Size = new System.Drawing.Size(95, 21);
@@ -390,7 +387,7 @@ namespace TicketManager
             // rbTicketNo
             // 
             this.rbTicketNo.AutoSize = true;
-            this.rbTicketNo.Location = new System.Drawing.Point(1048, 60);
+            this.rbTicketNo.Location = new System.Drawing.Point(9, 50);
             this.rbTicketNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbTicketNo.Name = "rbTicketNo";
             this.rbTicketNo.Size = new System.Drawing.Size(74, 21);
@@ -399,23 +396,11 @@ namespace TicketManager
             this.rbTicketNo.Text = "Tickets";
             this.rbTicketNo.UseVisualStyleBackColor = true;
             // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(945, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 25);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Keyword:";
-            // 
             // btnSearchKeyWord
             // 
             this.btnSearchKeyWord.BackColor = System.Drawing.Color.White;
             this.btnSearchKeyWord.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchKeyWord.Image")));
-            this.btnSearchKeyWord.Location = new System.Drawing.Point(1261, 25);
+            this.btnSearchKeyWord.Location = new System.Drawing.Point(223, 17);
             this.btnSearchKeyWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchKeyWord.Name = "btnSearchKeyWord";
             this.btnSearchKeyWord.Size = new System.Drawing.Size(43, 32);
@@ -428,7 +413,7 @@ namespace TicketManager
             // 
             this.btnDateFilter.BackColor = System.Drawing.Color.White;
             this.btnDateFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnDateFilter.Image")));
-            this.btnDateFilter.Location = new System.Drawing.Point(843, 25);
+            this.btnDateFilter.Location = new System.Drawing.Point(763, 30);
             this.btnDateFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDateFilter.Name = "btnDateFilter";
             this.btnDateFilter.Size = new System.Drawing.Size(41, 31);
@@ -440,21 +425,22 @@ namespace TicketManager
             // dtpCompltdTo
             // 
             this.dtpCompltdTo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dtpCompltdTo.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCompltdTo.CalendarFont = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCompltdTo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCompltdTo.Location = new System.Drawing.Point(652, 25);
+            this.dtpCompltdTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCompltdTo.Location = new System.Drawing.Point(612, 30);
             this.dtpCompltdTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpCompltdTo.Name = "dtpCompltdTo";
-            this.dtpCompltdTo.Size = new System.Drawing.Size(180, 31);
+            this.dtpCompltdTo.Size = new System.Drawing.Size(139, 31);
             this.dtpCompltdTo.TabIndex = 13;
             // 
             // txtKeyWord
             // 
-            this.txtKeyWord.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKeyWord.Location = new System.Drawing.Point(1044, 25);
+            this.txtKeyWord.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeyWord.Location = new System.Drawing.Point(6, 17);
             this.txtKeyWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtKeyWord.Name = "txtKeyWord";
-            this.txtKeyWord.Size = new System.Drawing.Size(211, 31);
+            this.txtKeyWord.Size = new System.Drawing.Size(211, 30);
             this.txtKeyWord.TabIndex = 14;
             // 
             // label10
@@ -463,7 +449,7 @@ namespace TicketManager
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(617, 25);
+            this.label10.Location = new System.Drawing.Point(576, 32);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 25);
             this.label10.TabIndex = 10;
@@ -472,12 +458,13 @@ namespace TicketManager
             // dtpCompltdFrom
             // 
             this.dtpCompltdFrom.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dtpCompltdFrom.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpCompltdFrom.CalendarFont = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCompltdFrom.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCompltdFrom.Location = new System.Drawing.Point(431, 25);
+            this.dtpCompltdFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCompltdFrom.Location = new System.Drawing.Point(429, 30);
             this.dtpCompltdFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpCompltdFrom.Name = "dtpCompltdFrom";
-            this.dtpCompltdFrom.Size = new System.Drawing.Size(180, 31);
+            this.dtpCompltdFrom.Size = new System.Drawing.Size(139, 31);
             this.dtpCompltdFrom.TabIndex = 12;
             // 
             // label9
@@ -486,7 +473,7 @@ namespace TicketManager
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(269, 25);
+            this.label9.Location = new System.Drawing.Point(267, 30);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(153, 25);
             this.label9.TabIndex = 10;
@@ -497,7 +484,7 @@ namespace TicketManager
             this.cmbStatusFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbStatusFilter.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStatusFilter.FormattingEnabled = true;
-            this.cmbStatusFilter.Location = new System.Drawing.Point(88, 25);
+            this.cmbStatusFilter.Location = new System.Drawing.Point(86, 30);
             this.cmbStatusFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbStatusFilter.Name = "cmbStatusFilter";
             this.cmbStatusFilter.Size = new System.Drawing.Size(159, 33);
@@ -510,7 +497,7 @@ namespace TicketManager
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(5, 25);
+            this.label8.Location = new System.Drawing.Point(3, 30);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(66, 25);
             this.label8.TabIndex = 10;
@@ -782,6 +769,21 @@ namespace TicketManager
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtKeyWord);
+            this.groupBox4.Controls.Add(this.rbComments);
+            this.groupBox4.Controls.Add(this.btnSearchKeyWord);
+            this.groupBox4.Controls.Add(this.rbTicketNo);
+            this.groupBox4.ForeColor = System.Drawing.Color.Gray;
+            this.groupBox4.Location = new System.Drawing.Point(1370, 11);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(271, 80);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Keyword";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -810,6 +812,8 @@ namespace TicketManager
             this.groupBox3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -841,7 +845,6 @@ namespace TicketManager
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dtpCompltdFrom;
         private System.Windows.Forms.Button btnDateFilter;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnSearchKeyWord;
         private System.Windows.Forms.TextBox txtKeyWord;
         private System.Windows.Forms.RadioButton rbComments;
@@ -873,6 +876,7 @@ namespace TicketManager
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStripStatus;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 
