@@ -442,6 +442,7 @@ namespace TicketManager
             this.txtKeyWord.Name = "txtKeyWord";
             this.txtKeyWord.Size = new System.Drawing.Size(211, 30);
             this.txtKeyWord.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.txtKeyWord, "Enter ticket number or specific words.");
             // 
             // label10
             // 
