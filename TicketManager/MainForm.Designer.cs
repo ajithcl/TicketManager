@@ -55,12 +55,13 @@ namespace TicketManager
             this.toExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtKeyWord = new System.Windows.Forms.TextBox();
             this.rbComments = new System.Windows.Forms.RadioButton();
-            this.rbTicketNo = new System.Windows.Forms.RadioButton();
             this.btnSearchKeyWord = new System.Windows.Forms.Button();
+            this.rbTicketNo = new System.Windows.Forms.RadioButton();
             this.btnDateFilter = new System.Windows.Forms.Button();
             this.dtpCompltdTo = new System.Windows.Forms.DateTimePicker();
-            this.txtKeyWord = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dtpCompltdFrom = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -87,14 +88,13 @@ namespace TicketManager
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTickets)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -372,6 +372,31 @@ namespace TicketManager
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtKeyWord);
+            this.groupBox4.Controls.Add(this.rbComments);
+            this.groupBox4.Controls.Add(this.btnSearchKeyWord);
+            this.groupBox4.Controls.Add(this.rbTicketNo);
+            this.groupBox4.ForeColor = System.Drawing.Color.Gray;
+            this.groupBox4.Location = new System.Drawing.Point(1370, 11);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(271, 80);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Keyword";
+            // 
+            // txtKeyWord
+            // 
+            this.txtKeyWord.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeyWord.Location = new System.Drawing.Point(6, 17);
+            this.txtKeyWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtKeyWord.Name = "txtKeyWord";
+            this.txtKeyWord.Size = new System.Drawing.Size(211, 30);
+            this.txtKeyWord.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.txtKeyWord, "Enter ticket number or specific words.");
+            // 
             // rbComments
             // 
             this.rbComments.AutoSize = true;
@@ -383,18 +408,6 @@ namespace TicketManager
             this.rbComments.TabStop = true;
             this.rbComments.Text = "Comments";
             this.rbComments.UseVisualStyleBackColor = true;
-            // 
-            // rbTicketNo
-            // 
-            this.rbTicketNo.AutoSize = true;
-            this.rbTicketNo.Location = new System.Drawing.Point(9, 50);
-            this.rbTicketNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rbTicketNo.Name = "rbTicketNo";
-            this.rbTicketNo.Size = new System.Drawing.Size(74, 21);
-            this.rbTicketNo.TabIndex = 17;
-            this.rbTicketNo.TabStop = true;
-            this.rbTicketNo.Text = "Tickets";
-            this.rbTicketNo.UseVisualStyleBackColor = true;
             // 
             // btnSearchKeyWord
             // 
@@ -408,6 +421,18 @@ namespace TicketManager
             this.btnSearchKeyWord.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearchKeyWord.UseVisualStyleBackColor = false;
             this.btnSearchKeyWord.Click += new System.EventHandler(this.btnSearchKeyWord_Click);
+            // 
+            // rbTicketNo
+            // 
+            this.rbTicketNo.AutoSize = true;
+            this.rbTicketNo.Location = new System.Drawing.Point(9, 50);
+            this.rbTicketNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbTicketNo.Name = "rbTicketNo";
+            this.rbTicketNo.Size = new System.Drawing.Size(74, 21);
+            this.rbTicketNo.TabIndex = 17;
+            this.rbTicketNo.TabStop = true;
+            this.rbTicketNo.Text = "Tickets";
+            this.rbTicketNo.UseVisualStyleBackColor = true;
             // 
             // btnDateFilter
             // 
@@ -433,16 +458,6 @@ namespace TicketManager
             this.dtpCompltdTo.Name = "dtpCompltdTo";
             this.dtpCompltdTo.Size = new System.Drawing.Size(139, 31);
             this.dtpCompltdTo.TabIndex = 13;
-            // 
-            // txtKeyWord
-            // 
-            this.txtKeyWord.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKeyWord.Location = new System.Drawing.Point(6, 17);
-            this.txtKeyWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtKeyWord.Name = "txtKeyWord";
-            this.txtKeyWord.Size = new System.Drawing.Size(211, 30);
-            this.txtKeyWord.TabIndex = 14;
-            this.toolTip1.SetToolTip(this.txtKeyWord, "Enter ticket number or specific words.");
             // 
             // label10
             // 
@@ -770,25 +785,11 @@ namespace TicketManager
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txtKeyWord);
-            this.groupBox4.Controls.Add(this.rbComments);
-            this.groupBox4.Controls.Add(this.btnSearchKeyWord);
-            this.groupBox4.Controls.Add(this.rbTicketNo);
-            this.groupBox4.ForeColor = System.Drawing.Color.Gray;
-            this.groupBox4.Location = new System.Drawing.Point(1370, 11);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(271, 80);
-            this.groupBox4.TabIndex = 19;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Keyword";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1690, 747);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox3);
@@ -808,13 +809,13 @@ namespace TicketManager
             this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTickets)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
