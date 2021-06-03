@@ -94,6 +94,7 @@ namespace TicketManager
             this.dgvObjects.RowTemplate.Height = 24;
             this.dgvObjects.Size = new System.Drawing.Size(564, 217);
             this.dgvObjects.TabIndex = 0;
+            this.dgvObjects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvObjects_CellDoubleClick);
             // 
             // tabUpdate
             // 

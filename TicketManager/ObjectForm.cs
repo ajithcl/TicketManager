@@ -23,5 +23,15 @@ namespace TicketManager
             // Display object details based on ticket number
             dgvObjects.DataSource = objects.GetDataBasedOnTicketNumber(ticketnr);
         }
+
+        public void ShowUpdateTab()
+        {
+            this.tabs.SelectTab(1);
+        }
+
+        private void dgvObjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ShowUpdateTab();
+        }
     }
 }
