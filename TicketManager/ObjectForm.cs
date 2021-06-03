@@ -12,9 +12,16 @@ namespace TicketManager
 {
     public partial class ObjectForm : Form
     {
+        Objects objects;
         public ObjectForm()
         {
             InitializeComponent();
+            objects = new Objects();
+        }
+        public ObjectForm(string ticketnr): this()
+        {
+            // Display object details based on ticket number
+            dgvObjects.DataSource = objects.GetDataBasedOnTicketNumber(ticketnr);
         }
     }
 }

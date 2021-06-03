@@ -16,12 +16,17 @@ namespace TicketManager
             get; set;
         }
 
+        #region Field assignments 
         // Database connection fields
         private readonly string connectionString;
         private readonly SqlConnection sqlConnection;
         private readonly SqlCommand sqlCommand;
         private readonly SqlDataAdapter sqlDA;
         private readonly DataTable dt;
+
+        private string ticketNumber;
+
+        #endregion
 
         #region Constructor
         public Objects()
@@ -34,5 +39,44 @@ namespace TicketManager
             dt = new DataTable();
         }
         #endregion
+
+
+        #region GetDataBasedOnTicketNumber
+        public DataTable GetDataBasedOnTicketNumber(string ticketNumber)
+        {
+            sqlCommand.Parameters.Clear();
+
+            //Clear Datatable
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT TicketNumber,ObjectName,Activity,CreatedOn,Comments FROM Objects WHERE TicketNumber = @ticketnumber";
+            sqlCommand.Parameters.AddWithValue("@ticketnumber", ticketNumber);
+
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+        #endregion
+
+        #region CloseSQLConnection
+        public void CloseSQLConnection()
+        {
+            if (sqlConnection != null && sqlConnection.State == ConnectionState.Open)
+                sqlConnection.Close();
+        }
+        #endregion
+
+        #region Finalizer
+        ~Objects()
+        {
+            CloseSQLConnection();
+        }
+        #endregion
+
     }
 }

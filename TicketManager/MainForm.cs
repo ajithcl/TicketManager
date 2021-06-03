@@ -332,8 +332,9 @@ namespace TicketManager
 
         private void btnShowObjects_Click(object sender, EventArgs e)
         {
-            var frmObjects = new ObjectForm();
-            frmObjects.ShowDialog();
+            string ticketNumber = txtTicketNo.Text;
+            var frmObject = new ObjectForm(ticketNumber);
+            frmObject.ShowDialog();
         }
     }
 }
