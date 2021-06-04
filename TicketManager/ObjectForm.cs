@@ -12,11 +12,15 @@ namespace TicketManager
 {
     public partial class ObjectForm : Form
     {
-        Objects objects;
+        private readonly Objects objects;
+
         public ObjectForm()
         {
             InitializeComponent();
+
             objects = new Objects();
+
+            cmbActivity.Items.AddRange(Objects.activityList);
         }
         public ObjectForm(string ticketnr): this()
         {
@@ -28,10 +32,32 @@ namespace TicketManager
         {
             this.tabs.SelectTab(1);
         }
+        private void ShowUpdateTab(Objects.ObjectData data)
+        {
+            txtTicket.Text   = data.ticketNumber;
+            txtObject.Text   = data.objectName;
+            rtbComments.Text = data.comments;
+
+            ShowUpdateTab();
+        }
 
         private void dgvObjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ShowUpdateTab();
+            if (e.RowIndex == -1)
+                return;
+            DataRowView rowView = (DataRowView)dgvObjects.Rows[e.RowIndex].DataBoundItem;
+            if (rowView == null)
+                return;
+            Objects.ObjectData data = new Objects.ObjectData
+            {
+                ticketNumber = rowView.Row["TicketNumber"].ToString(),
+                objectName   = rowView.Row["ObjectName"].ToString(),
+                activity     = rowView.Row["Activity"].ToString(),
+                comments     = rowView.Row["Comments"].ToString()
+            };
+
+
+            ShowUpdateTab(data);
         }
     }
 }

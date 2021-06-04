@@ -11,12 +11,21 @@ namespace TicketManager
 {
     class Objects
     {
+        #region Field declarations 
         public static string LastMessage
         {
             get; set;
         }
 
-        #region Field assignments 
+        public struct ObjectData
+        {
+            public string ticketNumber, objectName, comments, activity;
+        }
+
+        public static string[] activityList = new string[]
+                                                    {"New", "Delete", "Update", "Reference"};
+
+        
         // Database connection fields
         private readonly string connectionString;
         private readonly SqlConnection sqlConnection;
