@@ -25,7 +25,17 @@ namespace TicketManager
         public ObjectForm(string ticketnr): this()
         {
             // Display object details based on ticket number
-            dgvObjects.DataSource = objects.GetDataBasedOnTicketNumber(ticketnr);
+            DataTable dt = objects.GetDataBasedOnTicketNumber(ticketnr);
+            if (dt.Rows.Count > 0)
+                dgvObjects.DataSource = dt;
+            else
+            {
+                Objects.ObjectData data = new Objects.ObjectData()
+                {
+                    ticketNumber = ticketnr
+                };
+                ShowUpdateTab(data);
+            }
         }
 
         public void ShowUpdateTab()
@@ -34,9 +44,10 @@ namespace TicketManager
         }
         private void ShowUpdateTab(Objects.ObjectData data)
         {
-            txtTicket.Text   = data.ticketNumber;
-            txtObject.Text   = data.objectName;
-            rtbComments.Text = data.comments;
+            txtTicket.Text           = data.ticketNumber;
+            txtObject.Text           = data.objectName;
+            rtbComments.Text         = data.comments;
+            cmbActivity.SelectedItem = data.activity;
 
             ShowUpdateTab();
         }

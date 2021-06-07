@@ -19,6 +19,7 @@ namespace TicketManager
 
         public struct ObjectData
         {
+            public int id;
             public string ticketNumber, objectName, comments, activity;
         }
 
@@ -69,6 +70,98 @@ namespace TicketManager
             sqlConnection.Close();
 
             return dt;
+        }
+        #endregion
+
+        public int NextId
+        {
+            get
+            {
+                int rowCount = 0;
+                try
+                {
+                    sqlCommand.CommandText = "SELECT MAX(ID) FROM Objects";
+                    sqlConnection.Open();
+                    rowCount = (int) sqlCommand.ExecuteScalar();
+                    sqlConnection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    LastMessage = "Unable to retrieve NextId." + ex.Message;
+                }
+                return rowCount + 1;
+            }
+            
+        }
+
+        #region INSERT
+        public bool Insert(ObjectData data)
+        {
+            try
+            {
+                sqlCommand.Parameters.Clear();
+
+                sqlCommand.CommandText = "INSERT INTO Objects (ID, TicketNumber, ObjectName, Activity, CreatedOn, Comments)" +
+                                         "VALUES (@id, @ticketnumber, @objectname, @activity, @createdon, @comments)";
+                sqlCommand.Parameters.AddWithValue("@id", NextId);
+                sqlCommand.Parameters.AddWithValue("@ticketnumber", data.ticketNumber);
+                sqlCommand.Parameters.AddWithValue("@objectname", data.objectName);
+                sqlCommand.Parameters.AddWithValue("@activity", data.activity);
+                sqlCommand.Parameters.AddWithValue("@createdon", DateTime.Now.Date);
+                sqlCommand.Parameters.AddWithValue("@comments", data.comments);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlDA.InsertCommand = sqlCommand;
+
+
+                sqlConnection.Open();
+                sqlDA.InsertCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                LastMessage = "Object record created";
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                LastMessage = "Error while creating Obejct record." + ex.Message;
+                return false;
+            }
+        }
+        #endregion
+
+        #region UPDATE
+        public bool Update(ObjectData data)
+        {
+            try
+            {
+                sqlCommand.Parameters.Clear();
+
+                sqlCommand.CommandText = "UPDATE Objects SET Activity = @activity, Comments = @comments"
+                                            + "WHERE ID = @id";
+                sqlCommand.Parameters.AddWithValue("@activity", data.activity);
+                sqlCommand.Parameters.AddWithValue("@comments", data.comments);
+                sqlCommand.Parameters.AddWithValue("@id", data.id);
+
+                sqlCommand.CommandType = CommandType.Text;
+                sqlDA.UpdateCommand = sqlCommand;
+
+                sqlConnection.Open();
+                sqlDA.UpdateCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                LastMessage = "Object record updated";
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LastMessage = "Error while updating obejct record." + ex.Message;
+                return false;
+            }
+
         }
         #endregion
 
