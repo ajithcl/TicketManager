@@ -13,6 +13,7 @@ namespace TicketManager
     public partial class ObjectForm : Form
     {
         private readonly Objects objects;
+        private bool newRecord;
 
         public ObjectForm()
         {
@@ -24,16 +25,20 @@ namespace TicketManager
         }
         public ObjectForm(string ticketnr): this()
         {
-            // Display object details based on ticket number
             DataTable dt = objects.GetDataBasedOnTicketNumber(ticketnr);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0) {
+                newRecord = false;
+                // Display object details based on ticket number
                 dgvObjects.DataSource = dt;
+            }
             else
             {
+                // New record. Show edit screen
                 Objects.ObjectData data = new Objects.ObjectData()
                 {
                     ticketNumber = ticketnr
                 };
+                newRecord = true;
                 ShowUpdateTab(data);
             }
         }
@@ -69,6 +74,49 @@ namespace TicketManager
 
 
             ShowUpdateTab(data);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            bool result;
+            Objects.ObjectData data = new Objects.ObjectData()
+            {
+                ticketNumber = txtTicket.Text,
+                activity = cmbActivity.Text,
+                objectName = txtObject.Text,
+                comments = rtbComments.Text
+            };
+            if (newRecord)
+            {
+                // Insert
+                result = objects.Insert(data);
+
+            }
+            else
+            {
+                // Update
+                result = objects.Update(data);
+            }
+            if (Objects.LastMessage.Length > 75)
+                toolStripStatusLabel1.Text = Objects.LastMessage.Substring(0, 75);
+            else
+                toolStripStatusLabel1.Text = Objects.LastMessage;
+        }
+
+        private void tabs_SelectedIndexChanged(object sender, EventArgs e)
+        {               
+            switch (tabs.SelectedIndex)
+            {
+                case 0:  
+                        toolStripStatusLabel1.Text = "Objects related to ticket number";
+                        break;
+                case 1:
+                        toolStripStatusLabel1.Text = "Update object record";
+                        break;
+                default:
+                    toolStripStatusLabel1.Text = "Search of tickets";
+                    break;
+            }
         }
     }
 }

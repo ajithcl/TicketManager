@@ -98,18 +98,19 @@ namespace TicketManager
         #region INSERT
         public bool Insert(ObjectData data)
         {
+            int nextId = NextId;
             try
             {
                 sqlCommand.Parameters.Clear();
 
-                sqlCommand.CommandText = "INSERT INTO Objects (ID, TicketNumber, ObjectName, Activity, CreatedOn, Comments)" +
-                                         "VALUES (@id, @ticketnumber, @objectname, @activity, @createdon, @comments)";
-                sqlCommand.Parameters.AddWithValue("@id", NextId);
+                sqlCommand.CommandText = "INSERT INTO Objects (TicketNumber, ObjectName, Activity, CreatedOn, Comments)" +
+                                         "VALUES (@ticketnumber, @objectname, @activity, @createdon, @comments)";
+
                 sqlCommand.Parameters.AddWithValue("@ticketnumber", data.ticketNumber);
-                sqlCommand.Parameters.AddWithValue("@objectname", data.objectName);
-                sqlCommand.Parameters.AddWithValue("@activity", data.activity);
-                sqlCommand.Parameters.AddWithValue("@createdon", DateTime.Now.Date);
-                sqlCommand.Parameters.AddWithValue("@comments", data.comments);
+                sqlCommand.Parameters.AddWithValue("@objectname",   data.objectName);
+                sqlCommand.Parameters.AddWithValue("@activity",     data.activity);
+                sqlCommand.Parameters.AddWithValue("@createdon",    DateTime.Now.Date);
+                sqlCommand.Parameters.AddWithValue("@comments",     data.comments);
 
                 sqlCommand.CommandType = CommandType.Text;
 
@@ -117,7 +118,7 @@ namespace TicketManager
 
 
                 sqlConnection.Open();
-                sqlDA.InsertCommand.ExecuteNonQuery();
+                int rowsAffected = sqlDA.InsertCommand.ExecuteNonQuery();
                 sqlConnection.Close();
 
                 LastMessage = "Object record created";
@@ -140,11 +141,11 @@ namespace TicketManager
                 sqlCommand.Parameters.Clear();
 
                 sqlCommand.CommandText = "UPDATE Objects SET Activity = @activity, Comments = @comments"
-                                            + "WHERE ID = @id";
+                                       + " WHERE ID = @id";
+                sqlCommand.Parameters.AddWithValue("@id", data.id);
                 sqlCommand.Parameters.AddWithValue("@activity", data.activity);
                 sqlCommand.Parameters.AddWithValue("@comments", data.comments);
-                sqlCommand.Parameters.AddWithValue("@id", data.id);
-
+                
                 sqlCommand.CommandType = CommandType.Text;
                 sqlDA.UpdateCommand = sqlCommand;
 
@@ -158,6 +159,7 @@ namespace TicketManager
             }
             catch (Exception ex)
             {
+                CloseSQLConnection();
                 LastMessage = "Error while updating obejct record." + ex.Message;
                 return false;
             }

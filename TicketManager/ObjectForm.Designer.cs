@@ -70,6 +70,7 @@ namespace TicketManager
             this.tabs.SelectedIndex = 0;
             this.tabs.Size = new System.Drawing.Size(578, 252);
             this.tabs.TabIndex = 0;
+            this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -130,6 +131,7 @@ namespace TicketManager
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // rtbComments
             // 
