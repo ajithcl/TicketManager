@@ -138,6 +138,7 @@ namespace TicketManager
             if (sender.GetType().ToString() == "System.Windows.Forms.TabControl" && tabs.SelectedTab.Name == "tabUpdate")
             {
                 newRecord = true;
+                txtTicket.Text = ticketNumber;
                 toolStripStatusLabel1.Text = "Creates new record";
             }
         }
