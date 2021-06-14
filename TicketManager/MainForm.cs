@@ -43,8 +43,27 @@ namespace TicketManager
             EnableEditFields(false);
             tickets = new Tickets();
 
-            // Show tickets with status 'In Progress'
-            cmbStatusFilter.SelectedItem = "In Progress";
+            cmbStatusFilter.SelectedItem = GetInitialStatusFilter();
+        }
+
+        private string GetInitialStatusFilter()
+        {
+            statusCount = tickets.GetStatusCount();
+            if (statusCount != null)
+            {
+                if (statusCount["In Progress"] > 0)
+                    return "In Progress";
+                else if (statusCount["Assigned"] > 0)
+                    return "Assigned";
+                else if (statusCount["NeedToStart"] > 0)
+                    return "NeedToStart";
+                else if (statusCount["Waiting"] > 0)
+                    return "Waiting";
+                else
+                    return "Completed";
+            }
+            else
+                return "Completed";
         }
         private void LoadControls()
         {
@@ -154,7 +173,6 @@ namespace TicketManager
         #region clearAllFields
         private void clearAllFields()
         {
-            //TODO : Code for clearing fields.
             txtTicketNo.Text = "";
             txtDescription.Text = "";
             rtbComments.Text = "";
