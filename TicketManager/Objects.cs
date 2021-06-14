@@ -34,7 +34,7 @@ namespace TicketManager
         private readonly SqlDataAdapter sqlDA;
         private readonly DataTable dt;
 
-        private string ticketNumber;
+        // private string ticketNumber;
 
         #endregion
 
@@ -59,7 +59,7 @@ namespace TicketManager
             //Clear Datatable
             dt.Clear();
 
-            sqlCommand.CommandText = "SELECT TicketNumber,ObjectName,Activity,CreatedOn,Comments FROM Objects WHERE TicketNumber = @ticketnumber";
+            sqlCommand.CommandText = "SELECT ID,TicketNumber,ObjectName,Activity,CreatedOn,Comments FROM Objects WHERE TicketNumber = @ticketnumber";
             sqlCommand.Parameters.AddWithValue("@ticketnumber", ticketNumber);
 
             sqlCommand.CommandType = CommandType.Text;
@@ -136,26 +136,38 @@ namespace TicketManager
         #region UPDATE
         public bool Update(ObjectData data)
         {
+            if (data.id == 0)
+            {
+                LastMessage = "Invalid record id.";
+                return false;
+            }
             try
             {
                 sqlCommand.Parameters.Clear();
 
-                sqlCommand.CommandText = "UPDATE Objects SET Activity = @activity, Comments = @comments"
+                sqlCommand.CommandText = "UPDATE Objects SET Activity = @activity, Comments = @comments, ObjectName = @objectname"
                                        + " WHERE ID = @id";
-                sqlCommand.Parameters.AddWithValue("@id", data.id);
-                sqlCommand.Parameters.AddWithValue("@activity", data.activity);
-                sqlCommand.Parameters.AddWithValue("@comments", data.comments);
+                sqlCommand.Parameters.AddWithValue("@id",         data.id);
+                sqlCommand.Parameters.AddWithValue("@activity",   data.activity);
+                sqlCommand.Parameters.AddWithValue("@comments",   data.comments);
+                sqlCommand.Parameters.AddWithValue("@objectname", data.objectName);
                 
                 sqlCommand.CommandType = CommandType.Text;
                 sqlDA.UpdateCommand = sqlCommand;
 
                 sqlConnection.Open();
-                sqlDA.UpdateCommand.ExecuteNonQuery();
+                int rowsAffected = sqlDA.UpdateCommand.ExecuteNonQuery();
                 sqlConnection.Close();
 
-                LastMessage = "Object record updated";
-
-                return true;
+                if (rowsAffected > 0) {
+                    LastMessage = "Object record updated";
+                    return true;
+                }
+                else
+                {
+                    LastMessage = "Record didn't updated";
+                    return false;
+                }
             }
             catch (Exception ex)
             {

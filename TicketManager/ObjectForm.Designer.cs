@@ -71,6 +71,7 @@ namespace TicketManager
             this.tabs.Size = new System.Drawing.Size(578, 252);
             this.tabs.TabIndex = 0;
             this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
+            this.tabs.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabs_MouseClick);
             // 
             // tabPage1
             // 
