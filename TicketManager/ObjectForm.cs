@@ -116,6 +116,15 @@ namespace TicketManager
             switch (tabs.SelectedIndex)
             {
                 case 0:
+                    // Refresh datasource
+                    DataTable dt = objects.GetDataBasedOnTicketNumber(ticketNumber);
+                    if (dt.Rows.Count > 0)
+                    {
+                        newRecord = false;
+                        // Display object details based on ticket number
+                        dgvObjects.DataSource = dt;
+                    }
+
                     // Blankout input fields
                     txtTicket.Text            = ticketNumber;
                     txtObject.Text            = "";
@@ -145,8 +154,14 @@ namespace TicketManager
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            objects.Delete(currentRecordId);
+            bool result = objects.Delete(currentRecordId);
             toolStripStatusLabel1.Text = Objects.LastMessage;
+            if (result){
+                txtTicket.Text            = "";
+                txtObject.Text            = "";
+                cmbActivity.SelectedIndex = -1;
+                rtbComments.Text          = "";
+            }
         }
     }
 }

@@ -73,6 +73,32 @@ namespace TicketManager
         }
         #endregion
 
+        #region Object count based on ticket number
+        public int GetObjectCountForTicket(string ticketNumber)
+        {
+            int rowCount;
+            try
+            {
+                sqlCommand.Parameters.Clear();
+                sqlCommand.CommandText = "SELECT COUNT (*) FROM Objects WHERE TicketNumber = @ticketnumber";
+                sqlCommand.Parameters.AddWithValue("@ticketnumber", ticketNumber);
+
+                sqlCommand.CommandType = CommandType.Text;
+                sqlDA.SelectCommand = sqlCommand;
+
+                sqlConnection.Open();
+                rowCount =Convert.ToInt32(sqlDA.SelectCommand.ExecuteScalar());
+                sqlConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                LastMessage = ex.Message;
+                rowCount = 0;
+            }
+
+            return rowCount;
+        }
+        #endregion
         public int NextId
         {
             get
@@ -178,7 +204,7 @@ namespace TicketManager
         }
         #endregion
 
-        #region Delete
+        #region DELETE
         public bool Delete(int rowId)
         {
             if (rowId == 0)
