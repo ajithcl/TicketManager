@@ -16,6 +16,7 @@ namespace TicketManager
     public partial class MainForm : Form
     {
         private readonly Tickets tickets;
+        private readonly Objects objects;
         private Dictionary<string, int> statusCount = new Dictionary<string, int>();
         private string projectDirectory;
 
@@ -42,6 +43,29 @@ namespace TicketManager
             LoadControls();
             EnableEditFields(false);
             tickets = new Tickets();
+            objects = new Objects();
+
+            cmbStatusFilter.SelectedItem = GetInitialStatusFilter();
+        }
+
+        private string GetInitialStatusFilter()
+        {
+            statusCount = tickets.GetStatusCount();
+            if (statusCount != null)
+            {
+                if (statusCount["In Progress"] > 0)
+                    return "In Progress";
+                else if (statusCount["Assigned"] > 0)
+                    return "Assigned";
+                else if (statusCount["NeedToStart"] > 0)
+                    return "NeedToStart";
+                else if (statusCount["Waiting"] > 0)
+                    return "Waiting";
+                else
+                    return "Completed";
+            }
+            else
+                return "Completed";
         }
         private void LoadControls()
         {
@@ -50,7 +74,6 @@ namespace TicketManager
 
             cmbEditStatus.Items.AddRange(Tickets.ticketStatusList);
 
-            //TODO
             projectDirectory = ConfigurationManager.AppSettings.Get("ProjectDirectory");
 
             if (projectDirectory.Length == 0 )
@@ -152,7 +175,6 @@ namespace TicketManager
         #region clearAllFields
         private void clearAllFields()
         {
-            //TODO : Code for clearing fields.
             txtTicketNo.Text = "";
             txtDescription.Text = "";
             rtbComments.Text = "";
@@ -251,6 +273,11 @@ namespace TicketManager
             btnDirectory.Enabled = true;
             btnMail.Enabled = true;
             btnShowObjects.Enabled = true;
+
+            if (data.ticketNumber.Length > 0)
+            {
+                lblObjectCount.Text = objects.GetObjectCountForTicket(data.ticketNumber).ToString();
+            }
         }
         #endregion
 
@@ -330,8 +357,9 @@ namespace TicketManager
 
         private void btnShowObjects_Click(object sender, EventArgs e)
         {
-            var frmObjects = new ObjectForm();
-            frmObjects.ShowDialog();
+            string ticketNumber = txtTicketNo.Text;
+            var frmObject = new ObjectForm(ticketNumber);
+            frmObject.ShowDialog();
         }
     }
 }
