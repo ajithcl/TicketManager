@@ -88,6 +88,7 @@ namespace TicketManager
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblObjectCount = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -538,6 +539,7 @@ namespace TicketManager
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Controls.Add(this.lblObjectCount);
             this.groupBox3.Controls.Add(this.btnTimeStamp);
             this.groupBox3.Controls.Add(this.btnCancel);
             this.groupBox3.Controls.Add(this.btnSave);
@@ -785,6 +787,18 @@ namespace TicketManager
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // lblObjectCount
+            // 
+            this.lblObjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblObjectCount.AutoSize = true;
+            this.lblObjectCount.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblObjectCount.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObjectCount.ForeColor = System.Drawing.Color.Black;
+            this.lblObjectCount.Location = new System.Drawing.Point(1078, 21);
+            this.lblObjectCount.Name = "lblObjectCount";
+            this.lblObjectCount.Size = new System.Drawing.Size(0, 31);
+            this.lblObjectCount.TabIndex = 28;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -879,6 +893,7 @@ namespace TicketManager
         private System.Windows.Forms.ToolStripStatusLabel lblStripStatus;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label lblObjectCount;
     }
 }
 

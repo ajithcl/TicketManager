@@ -16,6 +16,7 @@ namespace TicketManager
     public partial class MainForm : Form
     {
         private readonly Tickets tickets;
+        private readonly Objects objects;
         private Dictionary<string, int> statusCount = new Dictionary<string, int>();
         private string projectDirectory;
 
@@ -42,6 +43,7 @@ namespace TicketManager
             LoadControls();
             EnableEditFields(false);
             tickets = new Tickets();
+            objects = new Objects();
 
             cmbStatusFilter.SelectedItem = GetInitialStatusFilter();
         }
@@ -271,6 +273,11 @@ namespace TicketManager
             btnDirectory.Enabled = true;
             btnMail.Enabled = true;
             btnShowObjects.Enabled = true;
+
+            if (data.ticketNumber.Length > 0)
+            {
+                lblObjectCount.Text = objects.GetObjectCountForTicket(data.ticketNumber).ToString();
+            }
         }
         #endregion
 
