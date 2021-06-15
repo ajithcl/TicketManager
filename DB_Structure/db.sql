@@ -77,7 +77,7 @@ GO
 
 
 
-/********************************************************** Object database   *************/
+/****** Object:  Table [dbo].[Objects]    Script Date: 6/15/2021 5:57:37 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -85,13 +85,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Objects](
-	[ID] [int] NOT NULL,
+	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[TicketNumber] [char](50) NOT NULL,
 	[ObjectName] [char](75) NOT NULL,
 	[Activity] [char](30) NULL,
 	[CreatedOn] [date] NOT NULL,
 	[Comments] [char](500) NULL,
- CONSTRAINT [PK_Objects] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Objects1] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -102,10 +102,8 @@ ALTER TABLE [dbo].[Objects]  WITH NOCHECK ADD  CONSTRAINT [FK_Objects_Tickets] F
 REFERENCES [dbo].[Tickets] ([TicketNumber])
 GO
 
-ALTER TABLE [dbo].[Objects] CHECK CONSTRAINT [FK_Objects_Tickets]
+ALTER TABLE [dbo].[Objects] NOCHECK CONSTRAINT [FK_Objects_Tickets]
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'One ticket record may contain multiple object records.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Objects', @level2type=N'CONSTRAINT',@level2name=N'FK_Objects_Tickets'
 GO
-
-
