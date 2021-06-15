@@ -98,7 +98,6 @@ namespace TicketManager
         #region INSERT
         public bool Insert(ObjectData data)
         {
-            int nextId = NextId;
             try
             {
                 sqlCommand.Parameters.Clear();
@@ -176,6 +175,48 @@ namespace TicketManager
                 return false;
             }
 
+        }
+        #endregion
+
+        #region Delete
+        public bool Delete(int rowId)
+        {
+            if (rowId == 0)
+            {
+                LastMessage = "Invalid row id to delete.";
+                return false;
+            }
+            try
+            {
+                sqlCommand.Parameters.Clear();
+                sqlCommand.CommandText = "DELETE FROM Objects WHERE ID = @id";
+                sqlCommand.Parameters.AddWithValue("@id",rowId);
+                sqlCommand.CommandType = CommandType.Text;
+                sqlDA.DeleteCommand = sqlCommand;
+
+                int rowsAffected;
+
+                sqlConnection.Open();
+                rowsAffected = sqlDA.DeleteCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                if (rowsAffected > 0)
+                {
+                    LastMessage = "Record deleted successfully.";
+                    return true;
+                }
+                else
+                {
+                    LastMessage = "Check record again!";
+                    return false;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                LastMessage = ex.Message;
+                return false;
+            }
         }
         #endregion
 

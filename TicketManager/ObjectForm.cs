@@ -142,5 +142,11 @@ namespace TicketManager
                 toolStripStatusLabel1.Text = "Creates new record";
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            objects.Delete(currentRecordId);
+            toolStripStatusLabel1.Text = Objects.LastMessage;
+        }
     }
 }
