@@ -69,6 +69,7 @@ namespace TicketManager
             this.label8 = new System.Windows.Forms.Label();
             this.dgvTickets = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblObjectCount = new System.Windows.Forms.Label();
             this.btnTimeStamp = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -88,7 +89,7 @@ namespace TicketManager
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblObjectCount = new System.Windows.Forms.Label();
+            this.lblDuration = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -539,6 +540,7 @@ namespace TicketManager
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Controls.Add(this.lblDuration);
             this.groupBox3.Controls.Add(this.lblObjectCount);
             this.groupBox3.Controls.Add(this.btnTimeStamp);
             this.groupBox3.Controls.Add(this.btnCancel);
@@ -564,6 +566,19 @@ namespace TicketManager
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "View/Edit";
+            // 
+            // lblObjectCount
+            // 
+            this.lblObjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblObjectCount.AutoSize = true;
+            this.lblObjectCount.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblObjectCount.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObjectCount.ForeColor = System.Drawing.Color.Black;
+            this.lblObjectCount.Location = new System.Drawing.Point(1136, 21);
+            this.lblObjectCount.Name = "lblObjectCount";
+            this.lblObjectCount.Size = new System.Drawing.Size(22, 25);
+            this.lblObjectCount.TabIndex = 28;
+            this.lblObjectCount.Text = "0";
             // 
             // btnTimeStamp
             // 
@@ -722,7 +737,7 @@ namespace TicketManager
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Gray;
-            this.label15.Location = new System.Drawing.Point(948, 21);
+            this.label15.Location = new System.Drawing.Point(1006, 21);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(124, 25);
             this.label15.TabIndex = 7;
@@ -787,17 +802,16 @@ namespace TicketManager
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // lblObjectCount
+            // lblDuration
             // 
-            this.lblObjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblObjectCount.AutoSize = true;
-            this.lblObjectCount.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblObjectCount.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObjectCount.ForeColor = System.Drawing.Color.Black;
-            this.lblObjectCount.Location = new System.Drawing.Point(1078, 21);
-            this.lblObjectCount.Name = "lblObjectCount";
-            this.lblObjectCount.Size = new System.Drawing.Size(0, 31);
-            this.lblObjectCount.TabIndex = 28;
+            this.lblDuration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.ForeColor = System.Drawing.Color.Black;
+            this.lblDuration.Location = new System.Drawing.Point(852, 22);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(0, 31);
+            this.lblDuration.TabIndex = 29;
             // 
             // MainForm
             // 
@@ -894,6 +908,7 @@ namespace TicketManager
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label lblObjectCount;
+        private System.Windows.Forms.Label lblDuration;
     }
 }
 

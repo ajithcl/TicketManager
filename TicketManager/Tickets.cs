@@ -28,7 +28,7 @@ namespace TicketManager
         public struct TicketData
         {
             public string ticketNumber, description, status, comments;
-            public DateTime createdOn, updatedOn;
+            public DateTime createdOn, updatedOn, completedOn;
         }
 
         #region Constructor

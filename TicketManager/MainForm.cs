@@ -241,6 +241,7 @@ namespace TicketManager
 
         private void dgvTickets_SelectionChanged(object sender, EventArgs e)
         {
+            DateTime lastDate;
             if ((dgvTickets.SelectedRows.Count) == 0)
                     return;
             var row = dgvTickets.SelectedRows[0];
@@ -255,8 +256,19 @@ namespace TicketManager
                 ticketNumber = rowView.Row["TicketNumber"].ToString(),
                 description = rowView.Row["Description"].ToString(),
                 status = rowView.Row["Status"].ToString(),
-                comments = rowView.Row["Comments"].ToString()
+                comments = rowView.Row["Comments"].ToString(),
+                createdOn = (DateTime)rowView.Row["CreatedOn"]
+                // completedOn = (DateTime)rowView.Row["CompletedOn"]
             };
+            try
+            {
+                lastDate = (rowView.Row["CompletedOn"] != DBNull.Value)? (DateTime)rowView.Row["CompletedOn"]:DateTime.Now;
+                ticketData.completedOn = lastDate;
+            }
+            catch
+            {
+                lastDate = DateTime.Now;
+            }
 
             ViewFieldData(ticketData);
 
@@ -265,10 +277,12 @@ namespace TicketManager
         #region ViewFieldData
         private void ViewFieldData(Tickets.TicketData data)
         {
-            txtTicketNo.Text = data.ticketNumber;
+            
+
+            txtTicketNo.Text    = data.ticketNumber;
             txtDescription.Text = data.description;
-            cmbEditStatus.Text = data.status;
-            rtbComments.Text = data.comments;
+            cmbEditStatus.Text  = data.status;
+            rtbComments.Text    = data.comments;
 
             btnDirectory.Enabled = true;
             btnMail.Enabled = true;
@@ -277,6 +291,14 @@ namespace TicketManager
             if (data.ticketNumber.Length > 0)
             {
                 lblObjectCount.Text = objects.GetObjectCountForTicket(data.ticketNumber).ToString();
+                try
+                {
+                    TimeSpan duration = data.completedOn - data.createdOn;
+                    lblDuration.Text = ((int)duration.TotalDays).ToString() + " days";
+                }catch
+                {
+                    lblDuration.Text = "-";
+                }
             }
         }
         #endregion
