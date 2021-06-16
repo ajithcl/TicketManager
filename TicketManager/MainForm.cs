@@ -96,6 +96,12 @@ namespace TicketManager
 
         private void btnDateFilter_Click(object sender, EventArgs e)
         {
+            DateTime startDate, endDate;
+            startDate = dtpCompltdFrom.Value;
+            endDate   = dtpCompltdTo.Value;
+
+            dgvTickets.DataSource = tickets.GetDataBasedOnCompletedDates(startDate, endDate);
+
             DisplayStatus("Completion date filter applied.", StatusTypes.general);
         }
 

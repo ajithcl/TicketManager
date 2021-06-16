@@ -71,6 +71,28 @@ namespace TicketManager
         }
         #endregion
 
+        #region Get Data based on completed date
+        public DataTable GetDataBasedOnCompletedDates(DateTime startDate, DateTime endDate)
+        {
+            sqlCommand.Parameters.Clear();
+
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT * FROM Tickets WHERE CompletedOn >= @startdate AND CompletedOn <= @enddate";
+            sqlCommand.Parameters.AddWithValue("@startdate", startDate);
+            sqlCommand.Parameters.AddWithValue("@enddate", endDate);
+
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+        #endregion
+
         #region  Insert
         public bool Insert(TicketData ticket)
         {
