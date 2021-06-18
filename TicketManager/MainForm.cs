@@ -359,6 +359,17 @@ namespace TicketManager
 
         private void btnSearchKeyWord_Click(object sender, EventArgs e)
         {
+            if (txtKeyWord.TextLength == 0)
+                return;
+
+            if (rbTicketNo.Checked == true)
+            {
+                dgvTickets.DataSource = tickets.GetDataBasedSimilarTicketNumber(txtKeyWord.Text);
+            }
+            else if (rbComments.Checked == true)
+            {
+                dgvTickets.DataSource = tickets.GetDatawithComments(txtKeyWord.Text);
+            }
             DisplayStatus("Keyword search filter applied.", StatusTypes.general);
         }
 

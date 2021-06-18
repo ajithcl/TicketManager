@@ -93,6 +93,50 @@ namespace TicketManager
         }
         #endregion
 
+        #region Get Data based on similar ticket number 
+        public DataTable GetDataBasedSimilarTicketNumber(string ticketNumber)
+        {
+            sqlCommand.Parameters.Clear();
+
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT * FROM Tickets WHERE TicketNumber LIKE @ticketnumber ";
+            sqlCommand.Parameters.AddWithValue("@ticketnumber", '%' + ticketNumber + '%');
+
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+
+        #endregion
+
+        #region Get Data with similar comments
+        public DataTable GetDatawithComments(string keyComment)
+        {
+            sqlCommand.Parameters.Clear();
+
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT * FROM Tickets WHERE Comments LIKE @keyComment ";
+            sqlCommand.Parameters.AddWithValue("@keyComment", '%' + keyComment + '%');
+
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+        #endregion
+
+
         #region  Insert
         public bool Insert(TicketData ticket)
         {
