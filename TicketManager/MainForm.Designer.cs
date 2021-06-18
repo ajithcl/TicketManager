@@ -69,6 +69,7 @@ namespace TicketManager
             this.label8 = new System.Windows.Forms.Label();
             this.dgvTickets = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblDuration = new System.Windows.Forms.Label();
             this.lblObjectCount = new System.Windows.Forms.Label();
             this.btnTimeStamp = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -89,7 +90,6 @@ namespace TicketManager
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblDuration = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -567,6 +567,17 @@ namespace TicketManager
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "View/Edit";
             // 
+            // lblDuration
+            // 
+            this.lblDuration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.ForeColor = System.Drawing.Color.Black;
+            this.lblDuration.Location = new System.Drawing.Point(852, 22);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(0, 25);
+            this.lblDuration.TabIndex = 29;
+            // 
             // lblObjectCount
             // 
             this.lblObjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -593,6 +604,7 @@ namespace TicketManager
             this.btnTimeStamp.Size = new System.Drawing.Size(53, 44);
             this.btnTimeStamp.TabIndex = 27;
             this.btnTimeStamp.UseVisualStyleBackColor = false;
+            this.btnTimeStamp.Click += new System.EventHandler(this.btnTimeStamp_Click);
             // 
             // btnCancel
             // 
@@ -801,17 +813,6 @@ namespace TicketManager
             // 
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
-            // lblDuration
-            // 
-            this.lblDuration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblDuration.AutoSize = true;
-            this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuration.ForeColor = System.Drawing.Color.Black;
-            this.lblDuration.Location = new System.Drawing.Point(852, 22);
-            this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(0, 31);
-            this.lblDuration.TabIndex = 29;
             // 
             // MainForm
             // 

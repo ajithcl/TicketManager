@@ -400,5 +400,11 @@ namespace TicketManager
             var frmObject = new ObjectForm(ticketNumber);
             frmObject.ShowDialog();
         }
+
+        private void btnTimeStamp_Click(object sender, EventArgs e)
+        {
+            rtbComments.Text += "\n"+ DateTime.Now.ToString() + ":";
+
+        }
     }
 }
