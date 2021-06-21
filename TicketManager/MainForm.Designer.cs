@@ -298,7 +298,7 @@ namespace TicketManager
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1690, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(2113, 38);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -663,6 +663,7 @@ namespace TicketManager
             this.btnMail.Size = new System.Drawing.Size(61, 63);
             this.btnMail.TabIndex = 23;
             this.btnMail.UseVisualStyleBackColor = false;
+            this.btnMail.Click += new System.EventHandler(this.btnMail_Click);
             // 
             // btnDirectory
             // 

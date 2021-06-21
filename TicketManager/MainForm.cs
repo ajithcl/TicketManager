@@ -467,6 +467,21 @@ namespace TicketManager
 
         }
 
+        private void btnMail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            Microsoft.Office.Interop.Outlook.Application outlookApp = new Microsoft.Office.Interop.Outlook.Application();
+            Microsoft.Office.Interop.Outlook._MailItem mailItem = outlookApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
+            mailItem.Subject = txtTicketNo.Text;
+            mailItem.Display(true);
+            }
+            catch(Exception ex)
+            {
+                DisplayStatus("Unable to launch mail", StatusTypes.error);
+            }
+        }
+
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string displayText = $"Project directory : {projectDirectory}" +
