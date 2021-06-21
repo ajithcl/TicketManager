@@ -28,7 +28,7 @@ namespace TicketManager
         public struct TicketData
         {
             public string ticketNumber, description, status, comments;
-            public DateTime createdOn, updatedOn;
+            public DateTime createdOn, updatedOn, completedOn;
         }
 
         #region Constructor
@@ -70,6 +70,72 @@ namespace TicketManager
             return dt;
         }
         #endregion
+
+        #region Get Data based on completed date
+        public DataTable GetDataBasedOnCompletedDates(DateTime startDate, DateTime endDate)
+        {
+            sqlCommand.Parameters.Clear();
+
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT * FROM Tickets WHERE CompletedOn >= @startdate AND CompletedOn <= @enddate";
+            sqlCommand.Parameters.AddWithValue("@startdate", startDate);
+            sqlCommand.Parameters.AddWithValue("@enddate", endDate);
+
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+        #endregion
+
+        #region Get Data based on similar ticket number 
+        public DataTable GetDataBasedSimilarTicketNumber(string ticketNumber)
+        {
+            sqlCommand.Parameters.Clear();
+
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT * FROM Tickets WHERE TicketNumber LIKE @ticketnumber ";
+            sqlCommand.Parameters.AddWithValue("@ticketnumber", '%' + ticketNumber + '%');
+
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+
+        #endregion
+
+        #region Get Data with similar comments
+        public DataTable GetDatawithComments(string keyComment)
+        {
+            sqlCommand.Parameters.Clear();
+
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT * FROM Tickets WHERE Comments LIKE @keyComment ";
+            sqlCommand.Parameters.AddWithValue("@keyComment", '%' + keyComment + '%');
+
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+        #endregion
+
 
         #region  Insert
         public bool Insert(TicketData ticket)

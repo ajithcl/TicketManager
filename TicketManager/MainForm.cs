@@ -96,6 +96,12 @@ namespace TicketManager
 
         private void btnDateFilter_Click(object sender, EventArgs e)
         {
+            DateTime startDate, endDate;
+            startDate = dtpCompltdFrom.Value;
+            endDate   = dtpCompltdTo.Value;
+
+            dgvTickets.DataSource = tickets.GetDataBasedOnCompletedDates(startDate, endDate);
+
             DisplayStatus("Completion date filter applied.", StatusTypes.general);
         }
 
@@ -241,6 +247,7 @@ namespace TicketManager
 
         private void dgvTickets_SelectionChanged(object sender, EventArgs e)
         {
+            DateTime lastDate;
             if ((dgvTickets.SelectedRows.Count) == 0)
                     return;
             var row = dgvTickets.SelectedRows[0];
@@ -255,8 +262,19 @@ namespace TicketManager
                 ticketNumber = rowView.Row["TicketNumber"].ToString(),
                 description = rowView.Row["Description"].ToString(),
                 status = rowView.Row["Status"].ToString(),
-                comments = rowView.Row["Comments"].ToString()
+                comments = rowView.Row["Comments"].ToString(),
+                createdOn = (DateTime)rowView.Row["CreatedOn"]
+                // completedOn = (DateTime)rowView.Row["CompletedOn"]
             };
+            try
+            {
+                lastDate = (rowView.Row["CompletedOn"] != DBNull.Value)? (DateTime)rowView.Row["CompletedOn"]:DateTime.Now;
+                ticketData.completedOn = lastDate;
+            }
+            catch
+            {
+                lastDate = DateTime.Now;
+            }
 
             ViewFieldData(ticketData);
 
@@ -265,10 +283,12 @@ namespace TicketManager
         #region ViewFieldData
         private void ViewFieldData(Tickets.TicketData data)
         {
-            txtTicketNo.Text = data.ticketNumber;
+            
+
+            txtTicketNo.Text    = data.ticketNumber;
             txtDescription.Text = data.description;
-            cmbEditStatus.Text = data.status;
-            rtbComments.Text = data.comments;
+            cmbEditStatus.Text  = data.status;
+            rtbComments.Text    = data.comments;
 
             btnDirectory.Enabled = true;
             btnMail.Enabled = true;
@@ -277,6 +297,14 @@ namespace TicketManager
             if (data.ticketNumber.Length > 0)
             {
                 lblObjectCount.Text = objects.GetObjectCountForTicket(data.ticketNumber).ToString();
+                try
+                {
+                    TimeSpan duration = data.completedOn - data.createdOn;
+                    lblDuration.Text = ((int)duration.TotalDays).ToString() + " days";
+                }catch
+                {
+                    lblDuration.Text = "-";
+                }
             }
         }
         #endregion
@@ -331,6 +359,17 @@ namespace TicketManager
 
         private void btnSearchKeyWord_Click(object sender, EventArgs e)
         {
+            if (txtKeyWord.TextLength == 0)
+                return;
+
+            if (rbTicketNo.Checked == true)
+            {
+                dgvTickets.DataSource = tickets.GetDataBasedSimilarTicketNumber(txtKeyWord.Text);
+            }
+            else if (rbComments.Checked == true)
+            {
+                dgvTickets.DataSource = tickets.GetDatawithComments(txtKeyWord.Text);
+            }
             DisplayStatus("Keyword search filter applied.", StatusTypes.general);
         }
 
@@ -360,6 +399,12 @@ namespace TicketManager
             string ticketNumber = txtTicketNo.Text;
             var frmObject = new ObjectForm(ticketNumber);
             frmObject.ShowDialog();
+        }
+
+        private void btnTimeStamp_Click(object sender, EventArgs e)
+        {
+            rtbComments.Text += "\n"+ DateTime.Now.ToString() + ":";
+
         }
     }
 }
