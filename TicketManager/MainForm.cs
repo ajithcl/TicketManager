@@ -14,7 +14,7 @@ namespace TicketManager
         private readonly Tickets tickets;
         private readonly Objects objects;
         private Dictionary<string, int> statusCount = new Dictionary<string, int>();
-        private string projectDirectory;
+        private string projectDirectory, templateDocDiretory;
 
         // Standard constant record actions
         private enum RecordAction
@@ -70,10 +70,13 @@ namespace TicketManager
 
             cmbEditStatus.Items.AddRange(Tickets.ticketStatusList);
 
-            projectDirectory = ConfigurationManager.AppSettings.Get("ProjectDirectory");
+            projectDirectory    = ConfigurationManager.AppSettings.Get("ProjectDirectory");
+            templateDocDiretory = ConfigurationManager.AppSettings.Get("TemplateDocumentsDirectory");
 
             if (projectDirectory.Length == 0 )
                 DisplayStatus("project directory not configured!", StatusTypes.error);
+            if (templateDocDiretory.Length == 0)
+                DisplayStatus("Template documents path not set!", StatusTypes.error);
         }
 
         private void cmbStatusFilter_SelectedValueChanged(object sender, EventArgs e)
@@ -156,11 +159,24 @@ namespace TicketManager
                         else
                         {
                             Directory.CreateDirectory(ticketDirPath);
+
+                            // Copy contents from template directory to ticket directory
+                            if (Directory.Exists(ticketDirPath)&& Directory.Exists(templateDocDiretory))
+                            {
+                                string[] filePathList = Directory.GetFiles(templateDocDiretory);
+                                
+                                foreach (var filepath in filePathList)
+                                {
+                                    string fileName = Path.GetFileName(filepath);
+                                    File.Copy(filepath, ticketDirPath + "\\" + fileName);                                
+                                }
+                            }
+
                         }
                     }
                     catch(Exception ex)
                     {
-                        DisplayStatus($"Error while creating directory {ticketDirPath}. {ex.Message}", StatusTypes.error);
+                        DisplayStatus($"Error while setup directory {ticketDirPath}. {ex.Message}", StatusTypes.error);
                     }
                 }
             }
@@ -382,7 +398,7 @@ namespace TicketManager
                     Arguments = ticketDirectory,
                     FileName = "explorer.exe"
                 };
-            Process.Start(startInfo);
+                Process.Start(startInfo);
             }
             else
             {
@@ -453,7 +469,9 @@ namespace TicketManager
 
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //TODO
+            string displayText = $"Project directory : {projectDirectory}" +
+                                 $"\nTemplate document directory : {templateDocDiretory}";
+            MessageBox.Show(displayText, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
