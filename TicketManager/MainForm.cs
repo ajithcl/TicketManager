@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TicketManager
@@ -405,6 +401,59 @@ namespace TicketManager
         {
             rtbComments.Text += "\n"+ DateTime.Now.ToString() + ":";
 
+        }
+
+        private void toExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel._Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+                excelApp.Visible = true;
+                worksheet = workbook.Sheets["Sheet1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "export";
+
+                // Storing header
+                for (int i = 1; i < dgvTickets.Columns.Count + 1; i++)
+                {
+                    worksheet.Cells[1, i] = dgvTickets.Columns[i - 1].HeaderText;
+                }
+
+                // Storing cell values
+                for (int i = 0; i < dgvTickets.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgvTickets.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = dgvTickets.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                string desktoppath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                if (desktoppath.Substring(desktoppath.Length - 1) != @"\")
+                {
+                    desktoppath += @"\";
+                }
+                desktoppath += "Tickets.xlsx";
+
+                workbook.SaveAs(desktoppath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+                //exit application    
+                excelApp.Quit();
+                DisplayStatus(desktoppath + " saved.", StatusTypes.success);
+            }
+            catch(Exception ex)
+            {
+                DisplayStatus(ex.Message, StatusTypes.error);
+            }
+
+        }
+
+        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //TODO
         }
     }
 }

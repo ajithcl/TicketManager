@@ -343,14 +343,16 @@ namespace TicketManager
             // toExcelToolStripMenuItem
             // 
             this.toExcelToolStripMenuItem.Name = "toExcelToolStripMenuItem";
-            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
-            this.toExcelToolStripMenuItem.Text = "to Excel";
+            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.toExcelToolStripMenuItem.Text = "To Excel";
+            this.toExcelToolStripMenuItem.Click += new System.EventHandler(this.toExcelToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(76, 24);
             this.settingsToolStripMenuItem1.Text = "Settings";
+            this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
             // groupBox2
             // 
