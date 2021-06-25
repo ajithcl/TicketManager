@@ -482,6 +482,35 @@ namespace TicketManager
             }
         }
 
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string ticketNumber = txtTicketNo.Text;
+            DialogResult result = MessageBox.Show($"Do you want to delete record for ticket number: {ticketNumber}", "Delete", 
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    bool deleted = tickets.Delete(ticketNumber);
+                    if (deleted == true)
+                    {
+                        DisplayStatus($"{ticketNumber} deleted.", StatusTypes.success);
+                        return;
+                    }
+                    else
+                    {
+                        DisplayStatus($"{Tickets.LastError}", StatusTypes.error);
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DisplayStatus("Error while deleting",StatusTypes.error);
+                    return;
+                }
+            }
+        }
+
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string displayText = $"Project directory : {projectDirectory}" +

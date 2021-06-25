@@ -298,7 +298,7 @@ namespace TicketManager
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1690, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1690, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -309,7 +309,7 @@ namespace TicketManager
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
-            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.ticketsToolStripMenuItem.Text = "Tickets";
             // 
             // newToolStripMenuItem
@@ -329,8 +329,9 @@ namespace TicketManager
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
