@@ -235,10 +235,8 @@ namespace TicketManager
                 sqlCommand.CommandType = CommandType.Text;
                 sqlDA.DeleteCommand = sqlCommand;
 
-                int rowsAffected;
-
                 sqlConnection.Open();
-                rowsAffected = sqlDA.DeleteCommand.ExecuteNonQuery();
+                int rowsAffected = sqlDA.DeleteCommand.ExecuteNonQuery();
                 sqlConnection.Close();
 
                 if (rowsAffected > 0)

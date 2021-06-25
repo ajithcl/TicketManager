@@ -494,6 +494,8 @@ namespace TicketManager
                     bool deleted = tickets.Delete(ticketNumber);
                     if (deleted == true)
                     {
+                        clearAllFields();
+                        dgvTickets.DataSource = null;
                         DisplayStatus($"{ticketNumber} deleted.", StatusTypes.success);
                         return;
                     }
@@ -503,7 +505,7 @@ namespace TicketManager
                         return;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     DisplayStatus("Error while deleting",StatusTypes.error);
                     return;
