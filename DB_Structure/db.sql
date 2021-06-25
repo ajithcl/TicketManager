@@ -77,7 +77,10 @@ GO
 
 
 
-/****** Object:  Table [dbo].[Objects]    Script Date: 6/15/2021 5:57:37 PM ******/
+USE [TicketManager]
+GO
+
+/****** Object:  Table [dbo].[Objects]    Script Date: 6/25/2021 5:33:39 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -100,10 +103,13 @@ GO
 
 ALTER TABLE [dbo].[Objects]  WITH NOCHECK ADD  CONSTRAINT [FK_Objects_Tickets] FOREIGN KEY([TicketNumber])
 REFERENCES [dbo].[Tickets] ([TicketNumber])
+ON UPDATE CASCADE
+ON DELETE CASCADE
 GO
 
-ALTER TABLE [dbo].[Objects] NOCHECK CONSTRAINT [FK_Objects_Tickets]
+ALTER TABLE [dbo].[Objects] CHECK CONSTRAINT [FK_Objects_Tickets]
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'One ticket record may contain multiple object records.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Objects', @level2type=N'CONSTRAINT',@level2name=N'FK_Objects_Tickets'
 GO
+
