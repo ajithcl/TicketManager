@@ -298,7 +298,7 @@ namespace TicketManager
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(2113, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(1690, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -309,7 +309,7 @@ namespace TicketManager
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
-            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
             this.ticketsToolStripMenuItem.Text = "Tickets";
             // 
             // newToolStripMenuItem
@@ -337,20 +337,20 @@ namespace TicketManager
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toExcelToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // toExcelToolStripMenuItem
             // 
             this.toExcelToolStripMenuItem.Name = "toExcelToolStripMenuItem";
-            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.toExcelToolStripMenuItem.Text = "To Excel";
             this.toExcelToolStripMenuItem.Click += new System.EventHandler(this.toExcelToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(76, 24);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(76, 26);
             this.settingsToolStripMenuItem1.Text = "Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
@@ -378,6 +378,7 @@ namespace TicketManager
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.txtKeyWord);
             this.groupBox4.Controls.Add(this.rbComments);
             this.groupBox4.Controls.Add(this.btnSearchKeyWord);
@@ -393,6 +394,7 @@ namespace TicketManager
             // 
             // txtKeyWord
             // 
+            this.txtKeyWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKeyWord.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyWord.Location = new System.Drawing.Point(6, 17);
             this.txtKeyWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -403,6 +405,7 @@ namespace TicketManager
             // 
             // rbComments
             // 
+            this.rbComments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbComments.AutoSize = true;
             this.rbComments.Location = new System.Drawing.Point(101, 50);
             this.rbComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -415,6 +418,7 @@ namespace TicketManager
             // 
             // btnSearchKeyWord
             // 
+            this.btnSearchKeyWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchKeyWord.BackColor = System.Drawing.Color.White;
             this.btnSearchKeyWord.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchKeyWord.Image")));
             this.btnSearchKeyWord.Location = new System.Drawing.Point(223, 17);
@@ -428,6 +432,7 @@ namespace TicketManager
             // 
             // rbTicketNo
             // 
+            this.rbTicketNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbTicketNo.AutoSize = true;
             this.rbTicketNo.Location = new System.Drawing.Point(9, 50);
             this.rbTicketNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -525,8 +530,9 @@ namespace TicketManager
             // 
             // dgvTickets
             // 
-            this.dgvTickets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTickets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTickets.Location = new System.Drawing.Point(12, 197);
@@ -541,7 +547,8 @@ namespace TicketManager
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lblDuration);
             this.groupBox3.Controls.Add(this.lblObjectCount);
             this.groupBox3.Controls.Add(this.btnTimeStamp);
@@ -682,7 +689,8 @@ namespace TicketManager
             // 
             // rtbComments
             // 
-            this.rtbComments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rtbComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbComments.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbComments.Location = new System.Drawing.Point(128, 103);
             this.rtbComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -693,7 +701,8 @@ namespace TicketManager
             // 
             // txtDescription
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.Location = new System.Drawing.Point(128, 63);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -834,6 +843,7 @@ namespace TicketManager
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TicketManager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
