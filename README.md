@@ -28,7 +28,8 @@ Application built on C# .net and SQL Server.
 
 ### How does it look like?
 
-![TicketManager](https://user-images.githubusercontent.com/44773122/123372824-e9915980-d5a1-11eb-8d7a-a768432dddba.png)
+![Screenshot 2021-06-25 142619](https://user-images.githubusercontent.com/44773122/123398708-77c90800-d5c1-11eb-99e3-7d2d47337fc0.png)
+
 
 
 
