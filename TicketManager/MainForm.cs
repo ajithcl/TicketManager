@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TicketManager
@@ -18,7 +14,7 @@ namespace TicketManager
         private readonly Tickets tickets;
         private readonly Objects objects;
         private Dictionary<string, int> statusCount = new Dictionary<string, int>();
-        private string projectDirectory;
+        private string projectDirectory, templateDocDiretory;
 
         // Standard constant record actions
         private enum RecordAction
@@ -74,10 +70,13 @@ namespace TicketManager
 
             cmbEditStatus.Items.AddRange(Tickets.ticketStatusList);
 
-            projectDirectory = ConfigurationManager.AppSettings.Get("ProjectDirectory");
+            projectDirectory    = ConfigurationManager.AppSettings.Get("ProjectDirectory");
+            templateDocDiretory = ConfigurationManager.AppSettings.Get("TemplateDocumentsDirectory");
 
             if (projectDirectory.Length == 0 )
                 DisplayStatus("project directory not configured!", StatusTypes.error);
+            if (templateDocDiretory.Length == 0)
+                DisplayStatus("Template documents path not set!", StatusTypes.error);
         }
 
         private void cmbStatusFilter_SelectedValueChanged(object sender, EventArgs e)
@@ -160,11 +159,24 @@ namespace TicketManager
                         else
                         {
                             Directory.CreateDirectory(ticketDirPath);
+
+                            // Copy contents from template directory to ticket directory
+                            if (Directory.Exists(ticketDirPath)&& Directory.Exists(templateDocDiretory))
+                            {
+                                string[] filePathList = Directory.GetFiles(templateDocDiretory);
+                                
+                                foreach (var filepath in filePathList)
+                                {
+                                    string fileName = Path.GetFileName(filepath);
+                                    File.Copy(filepath, ticketDirPath + "\\" + fileName);                                
+                                }
+                            }
+
                         }
                     }
                     catch(Exception ex)
                     {
-                        DisplayStatus($"Error while creating directory {ticketDirPath}. {ex.Message}", StatusTypes.error);
+                        DisplayStatus($"Error while setup directory {ticketDirPath}. {ex.Message}", StatusTypes.error);
                     }
                 }
             }
@@ -386,7 +398,7 @@ namespace TicketManager
                     Arguments = ticketDirectory,
                     FileName = "explorer.exe"
                 };
-            Process.Start(startInfo);
+                Process.Start(startInfo);
             }
             else
             {
@@ -405,6 +417,76 @@ namespace TicketManager
         {
             rtbComments.Text += "\n"+ DateTime.Now.ToString() + ":";
 
+        }
+
+        private void toExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel._Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+                excelApp.Visible = true;
+                worksheet = workbook.Sheets["Sheet1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "export";
+
+                // Storing header
+                for (int i = 1; i < dgvTickets.Columns.Count + 1; i++)
+                {
+                    worksheet.Cells[1, i] = dgvTickets.Columns[i - 1].HeaderText;
+                }
+
+                // Storing cell values
+                for (int i = 0; i < dgvTickets.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgvTickets.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = dgvTickets.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                string desktoppath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                if (desktoppath.Substring(desktoppath.Length - 1) != @"\")
+                {
+                    desktoppath += @"\";
+                }
+                desktoppath += "Tickets.xlsx";
+
+                workbook.SaveAs(desktoppath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+                //exit application    
+                excelApp.Quit();
+                DisplayStatus(desktoppath + " saved.", StatusTypes.success);
+            }
+            catch(Exception ex)
+            {
+                DisplayStatus(ex.Message, StatusTypes.error);
+            }
+
+        }
+
+        private void btnMail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            Microsoft.Office.Interop.Outlook.Application outlookApp = new Microsoft.Office.Interop.Outlook.Application();
+            Microsoft.Office.Interop.Outlook._MailItem mailItem = outlookApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
+            mailItem.Subject = txtTicketNo.Text;
+            mailItem.Display(true);
+            }
+            catch(Exception ex)
+            {
+                DisplayStatus("Unable to launch mail", StatusTypes.error);
+            }
+        }
+
+        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string displayText = $"Project directory : {projectDirectory}" +
+                                 $"\nTemplate document directory : {templateDocDiretory}";
+            MessageBox.Show(displayText, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
