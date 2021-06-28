@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
+
 namespace TicketManager
 {
     public partial class MainForm : Form
@@ -15,6 +16,8 @@ namespace TicketManager
         private readonly Objects objects;
         private Dictionary<string, int> statusCount = new Dictionary<string, int>();
         private string projectDirectory, templateDocDiretory;
+        private static System.Windows.Forms.Timer timer;
+
 
         // Standard constant record actions
         private enum RecordAction
@@ -112,6 +115,19 @@ namespace TicketManager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (txtTicketNo.Text.Length == 0)
+            {
+                errorProvider1.SetError(txtTicketNo, "Invalid Ticketnumber");
+                SetErrorProviderTimeOut(errorProvider1, txtTicketNo);
+                return;
+            }
+            if (cmbEditStatus.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(cmbEditStatus, "Invalid Status");
+                SetErrorProviderTimeOut(errorProvider1, cmbEditStatus);
+                return;
+            }
+            
             bool result = false;
             Tickets.TicketData ticketData = new Tickets.TicketData
             {
@@ -372,7 +388,18 @@ namespace TicketManager
         private void btnSearchKeyWord_Click(object sender, EventArgs e)
         {
             if (txtKeyWord.TextLength == 0)
+            {
+                errorProvider1.SetError(txtKeyWord, "Enter value");
+                SetErrorProviderTimeOut(errorProvider1, txtKeyWord);
                 return;
+            }
+            else if (rbTicketNo.Checked == false && rbComments.Checked == false)
+            {
+                errorProvider1.SetError(rbTicketNo, "Missing selection");
+                SetErrorProviderTimeOut(errorProvider1, rbTicketNo);
+                return;
+            }
+                
 
             if (rbTicketNo.Checked == true)
             {
@@ -516,7 +543,9 @@ namespace TicketManager
         private void cmbEditStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbEditStatus.SelectedIndex != -1)
+            {
                 rtbComments.Text += $"\n {DateTime.Now.ToString()} : {cmbEditStatus.Text}";
+            }
         }
 
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -525,5 +554,21 @@ namespace TicketManager
                                  $"\nTemplate document directory : {templateDocDiretory}";
             MessageBox.Show(displayText, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private static void SetErrorProviderTimeOut(ErrorProvider errorProviderControl, object sourceControl)
+        {
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 3000; // Hardcoded milliseconds interval  
+            timer.Tick += delegate { Timer_Elapsed(errorProviderControl, sourceControl, timer); };
+            timer.Enabled = true;
+        }
+
+        private static void Timer_Elapsed(ErrorProvider errorProvider, object sourceControl, System.Windows.Forms.Timer timer)
+        {
+            errorProvider.SetError((Control)sourceControl, "");
+            timer.Stop();
+            timer.Dispose();
+        }
+
     }
 }
