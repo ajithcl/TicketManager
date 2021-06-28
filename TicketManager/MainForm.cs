@@ -513,6 +513,12 @@ namespace TicketManager
             }
         }
 
+        private void cmbEditStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEditStatus.SelectedIndex != -1)
+                rtbComments.Text += $"\n {DateTime.Now.ToString()} : {cmbEditStatus.Text}";
+        }
+
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string displayText = $"Project directory : {projectDirectory}" +
