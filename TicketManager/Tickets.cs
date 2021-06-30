@@ -136,7 +136,6 @@ namespace TicketManager
         }
         #endregion
 
-
         #region  Insert
         public bool Insert(TicketData ticket)
         {
@@ -216,6 +215,47 @@ namespace TicketManager
                 return false;
             }
             
+        }
+        #endregion
+
+        #region Delete
+        public bool Delete(string ticketNumber)
+        {
+            if (ticketNumber.Length == 0)
+            {
+                LastError = "Invalid ticketnumber";
+                return false;
+            }
+
+            try
+            {
+                sqlCommand.Parameters.Clear();
+                sqlCommand.CommandText = "DELETE FROM Tickets WHERE TicketNumber=@ticketnumber";
+                sqlCommand.Parameters.AddWithValue("@ticketnumber", ticketNumber);
+                sqlCommand.CommandType = CommandType.Text;
+                sqlDA.DeleteCommand = sqlCommand;
+
+                sqlConnection.Open();
+                int rowsAffected = sqlDA.DeleteCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                if (rowsAffected > 0)
+                {
+                    LastError = "Records deleted";
+                    return true;
+                }
+                else
+                {
+                    LastError = "No records deleted.";
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                LastError = ex.Message;
+                return false;
+            }
         }
         #endregion
 
