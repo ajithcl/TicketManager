@@ -73,6 +73,26 @@ namespace TicketManager
         }
         #endregion
 
+        #region GetAllObjects
+        public DataTable GetAllObjects()
+        {
+            sqlCommand.Parameters.Clear();
+
+            // Clear datatable
+            dt.Clear();
+
+            sqlCommand.CommandText = "SELECT * FROM Objects";
+            sqlCommand.CommandType = CommandType.Text;
+            sqlDA.SelectCommand = sqlCommand;
+
+            sqlConnection.Open();
+            sqlDA.Fill(dt);
+            sqlConnection.Close();
+
+            return dt;
+        }
+        #endregion
+
         #region Object count based on ticket number
         public int GetObjectCountForTicket(string ticketNumber)
         {

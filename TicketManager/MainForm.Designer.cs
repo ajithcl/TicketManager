@@ -91,6 +91,7 @@ namespace TicketManager
             this.lblStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.allObjectsToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -300,7 +301,7 @@ namespace TicketManager
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1690, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1690, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -338,7 +339,8 @@ namespace TicketManager
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toExcelToolStripMenuItem});
+            this.toExcelToolStripMenuItem,
+            this.allObjectsToExcelToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
             this.exportToolStripMenuItem.Text = "Export";
@@ -346,9 +348,9 @@ namespace TicketManager
             // toExcelToolStripMenuItem
             // 
             this.toExcelToolStripMenuItem.Name = "toExcelToolStripMenuItem";
-            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
-            this.toExcelToolStripMenuItem.Text = "To Excel";
-            this.toExcelToolStripMenuItem.Click += new System.EventHandler(this.toExcelToolStripMenuItem_Click);
+            this.toExcelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.toExcelToolStripMenuItem.Text = "Tickets to Excel";
+            this.toExcelToolStripMenuItem.Click += new System.EventHandler(this.ToExcelToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
@@ -835,6 +837,13 @@ namespace TicketManager
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // allObjectsToExcelToolStripMenuItem
+            // 
+            this.allObjectsToExcelToolStripMenuItem.Name = "allObjectsToExcelToolStripMenuItem";
+            this.allObjectsToExcelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.allObjectsToExcelToolStripMenuItem.Text = "All Objects to Excel";
+            this.allObjectsToExcelToolStripMenuItem.Click += new System.EventHandler(this.AllObjectsToExcelToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -934,6 +943,7 @@ namespace TicketManager
         private System.Windows.Forms.Label lblObjectCount;
         private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolStripMenuItem allObjectsToExcelToolStripMenuItem;
     }
 }
 

@@ -446,7 +446,7 @@ namespace TicketManager
 
         }
 
-        private void toExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -561,6 +561,66 @@ namespace TicketManager
             timer.Interval = 3000; // Hardcoded milliseconds interval  
             timer.Tick += delegate { Timer_Elapsed(errorProviderControl, sourceControl, timer); };
             timer.Enabled = true;
+        }
+
+        private void AllObjectsToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dt = objects.GetAllObjects();
+
+                if (dt.Rows.Count > 0)
+                {
+                    Microsoft.Office.Interop.Excel._Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    Microsoft.Office.Interop.Excel._Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
+                    Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+                    excelApp.Visible = true;
+                    worksheet = workbook.Sheets["Sheet1"];
+                    worksheet = workbook.ActiveSheet;
+                    worksheet.Name = "export";
+                    // Storing header
+                    for (int i = 1; i < dt.Columns.Count + 1; i++)
+                    {
+                        worksheet.Cells[1, i] = dt.Columns[i - 1].Caption;
+                    }
+
+                    // Storing cell values
+                    for (int i = 0; i < dt.Rows.Count - 1; i++)
+                    {
+                        for (int j = 0; j < dt.Columns.Count; j++)
+                        {
+                            worksheet.Cells[i + 2, j + 1] = dt.Rows[i].ItemArray[j].ToString();
+                        }
+                    }
+                
+
+                    string desktoppath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                    if (desktoppath.Substring(desktoppath.Length - 1) != @"\")
+                    {
+                        desktoppath += @"\";
+                    }
+                    desktoppath += "Objects.xlsx";
+
+                    workbook.SaveAs(desktoppath, Type.Missing, Type.Missing, 
+                                   Type.Missing, Type.Missing, Type.Missing, 
+                                   Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, 
+                                   Type.Missing, Type.Missing, Type.Missing);
+
+                    //exit application    
+                    excelApp.Quit();
+                    DisplayStatus(desktoppath + " saved.", StatusTypes.success);
+                }
+                else
+                {
+                    DisplayStatus("No Object data.", StatusTypes.general);
+                }
+            }
+            catch (Exception ex)
+            {
+                DisplayStatus(ex.Message, StatusTypes.error);
+            }
         }
 
         private static void Timer_Elapsed(ErrorProvider errorProvider, object sourceControl, System.Windows.Forms.Timer timer)
