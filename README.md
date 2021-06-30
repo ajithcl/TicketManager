@@ -11,11 +11,8 @@ Tickets/Requests handling tool. Started this project as part of learning project
 <th>Comments</th>
 </thead>
 <tbody>
-<tr>
-<td>25 Jun 2021</td>
-<td>Keyword search</td>
-<td>User can search with ticket number or words from comments</td>
-</tr>
+<tr><td>30 Jun 2021</td><td>Tickets delete.Error validations.</td><td>User can delete tickets. Invalid entries will be validated while saving tickets.</td></tr>
+<tr><td>25 Jun 2021</td><td>Keyword search</td><td>User can search with ticket number or words from comments</td></tr>
 </tbody>
 </table>
 
