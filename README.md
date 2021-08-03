@@ -28,7 +28,8 @@ Application built on C# .net and SQL Server.
 
 ![Screenshot 2021-06-25 142619](https://user-images.githubusercontent.com/44773122/123398708-77c90800-d5c1-11eb-99e3-7d2d47337fc0.png)
 
-
+Each ticket may contain multiple objects which is related to tickets.
+![Screenshot 2021-08-03 182028](https://user-images.githubusercontent.com/44773122/128018363-445f218d-f955-474b-854e-5d3cb52f4b8c.png)
 
 
 ### Who can use this?
